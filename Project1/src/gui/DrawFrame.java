@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 public class DrawFrame {
 	private JFrame mainWindow;
 	
+	/**
+	 * Initializes a GUI window and set's the window as visible
+	 */
 	public DrawFrame(){
 		initialize();
 		mainWindow.setVisible(true);
