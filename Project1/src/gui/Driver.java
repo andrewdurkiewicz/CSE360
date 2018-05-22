@@ -1,6 +1,4 @@
 package gui;
-
-<<<<<<< HEAD
 import java.awt.EventQueue;
 
 /**
@@ -31,13 +29,6 @@ public class Driver {
 				}
 			}
 		});
-=======
-public class Driver {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
->>>>>>> d7997d6d3719de0865f795e5e9cb46133280cd25
 	}
-
 }
