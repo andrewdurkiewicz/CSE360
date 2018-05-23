@@ -12,7 +12,7 @@ public class DrawPanelTwo extends JPanel {
 	 */
 	public DrawPanelTwo() {
 		setBackground(Color.WHITE);
-		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setLayout(null);
 	}
 
 }
