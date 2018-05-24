@@ -1,17 +1,30 @@
 package gui;
-
 import javax.swing.JPanel;
-import java.awt.FlowLayout;
+import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Dimension;
 
-public class DrawPanelOne extends JPanel {
+public class DrawPanelOne extends JPanel{
 
-	/**
-	 * Create the panel.
-	 */
-	public DrawPanelOne() {
-		setBackground(Color.WHITE);
-		setLayout(null);
-	}
+private int height, width;
 
+   public DrawPanelOne(int w, int h){
+      super();
+      height = h;
+      width = w;
+      super.setVisible(true);
+      super.setPreferredSize(new Dimension(width, height));
+      super.setBackground(Color.YELLOW);
+   
+      JLabel oval = new OvalLabel();
+      JLabel rectangle = new RectLabel();
+      JLabel triangle = new TriLabel();
+      JLabel diamond = new DiamondLabel();
+      super.add(oval);
+      super.add(rectangle);
+      super.add(triangle);
+      super.add(diamond);
+      
+   }
+   
 }
