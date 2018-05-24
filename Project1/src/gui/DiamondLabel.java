@@ -8,7 +8,7 @@ public class DiamondLabel extends JLabel{
    public DiamondLabel(){
       super();
       super.setVisible(true);
-      super.setOpaque(true);
+      super.setOpaque(false);
       super.setPreferredSize(new Dimension(70, 70));
    }
    
