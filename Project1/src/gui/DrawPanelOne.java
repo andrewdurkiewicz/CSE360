@@ -10,7 +10,7 @@ private int height, width;
 public JLabel oval;
 public JLabel rectangle;
 public JLabel triangle;
-public JLabel diamond;
+public JLabel star;
 
    public DrawPanelOne(){
       super();
@@ -20,11 +20,11 @@ public JLabel diamond;
       oval = new OvalLabel();
       rectangle = new RectLabel();
       triangle = new TriLabel();
-      diamond = new DiamondLabel();
+      star = new StarLabel();
       super.add(oval);
       super.add(rectangle);
       super.add(triangle);
-      super.add(diamond);
+      super.add(star);
       
    }
    
