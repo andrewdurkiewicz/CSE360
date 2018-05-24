@@ -8,22 +8,22 @@ public class DrawPanelOne extends JPanel{
 
 private int height, width;
 public JLabel oval;
-public JLabel rectangle;
 public JLabel triangle;
+public JLabel rectangle;
 public JLabel star;
 
    public DrawPanelOne(){
       super();
       super.setVisible(true);
-      super.setBackground(Color.YELLOW);
+      super.setBackground(Color.WHITE);
    
       oval = new OvalLabel();
-      rectangle = new RectLabel();
       triangle = new TriLabel();
+      rectangle = new RectLabel();
       star = new StarLabel();
       super.add(oval);
-      super.add(rectangle);
       super.add(triangle);
+      super.add(rectangle);
       super.add(star);
       
    }
