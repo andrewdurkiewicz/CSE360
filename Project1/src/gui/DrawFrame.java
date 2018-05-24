@@ -39,7 +39,7 @@ public class DrawFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Add Panel One
-		DrawPanelOne dpOne = new DrawPanelOne();
+		DrawPanelOne dpOne = new DrawPanelOne(); 
 		dpOne.setBounds(10, 10, 870, 100);
 		contentPane.add(dpOne);
 		
