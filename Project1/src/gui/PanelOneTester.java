@@ -1,4 +1,4 @@
-package gui;
+	package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -12,7 +12,7 @@ public class PanelOneTester{
       myFrame.setBounds(0,0,800,600);
       myFrame.setTitle("Hope it Works");
       
-      JPanel myPanel = new DrawPanelOne(800, 100);
+      JPanel myPanel = new DrawPanelOne();//NOTE: REMOVED INT HEIGHT AND WIDTH FROM DRAWPANELONE
       JPanel panel2 = new JPanel();
       panel2.setVisible(true);
       panel2.setBackground(Color.RED);

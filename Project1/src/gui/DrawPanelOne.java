@@ -7,19 +7,20 @@ import java.awt.Dimension;
 public class DrawPanelOne extends JPanel{
 
 private int height, width;
+public JLabel oval;
+public JLabel rectangle;
+public JLabel triangle;
+public JLabel diamond;
 
-   public DrawPanelOne(int w, int h){
+   public DrawPanelOne(){
       super();
-      height = h;
-      width = w;
       super.setVisible(true);
-      super.setPreferredSize(new Dimension(width, height));
       super.setBackground(Color.YELLOW);
    
-      JLabel oval = new OvalLabel();
-      JLabel rectangle = new RectLabel();
-      JLabel triangle = new TriLabel();
-      JLabel diamond = new DiamondLabel();
+      oval = new OvalLabel();
+      rectangle = new RectLabel();
+      triangle = new TriLabel();
+      diamond = new DiamondLabel();
       super.add(oval);
       super.add(rectangle);
       super.add(triangle);
