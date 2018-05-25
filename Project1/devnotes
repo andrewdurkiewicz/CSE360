@@ -15,4 +15,17 @@ Panel two will also become a child class of a draghandler class where it extends
 DRaggableLabel doesnt need uinque child classes.
 
 
-
+temp.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if(isNextPoint==false) {
+							currentPos.x = temp.getBounds().x;
+							currentPos.y = temp.getBounds().y;
+						} if (isNextPoint == true) {
+							previousPos = currentPos;
+							currentPos.x = temp.getBounds().x;
+							currentPos.y = temp.getBounds().y;
+							
+						}
+					}
+				});

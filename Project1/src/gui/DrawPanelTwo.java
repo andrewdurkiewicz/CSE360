@@ -22,21 +22,42 @@ import java.awt.event.MouseMotionAdapter;
 
 public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private Point mousePos;
+	public static Point currentPos;
+	public static Point previousPos;
+	public static boolean isNextPoint = false;
+	
+	private ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>();
+	private ArrayList<DrawArrow> ArrowRecord = new ArrayList<DrawArrow>();
 	/**
 	 * Create the panel.
 	 */
-	private ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>();
-	   public DrawPanelTwo(){
-	      setBackground(Color.WHITE);
-	      new DropTarget(this, this);   
-	      
-	   }
+	
+	public DrawPanelTwo(){
+		setBackground(Color.WHITE);
+		new DropTarget(this, this);      
+	}
+	
+	public void updatePanel() {
+		this.removeAll();
+		for(DraggableIcon currico:IconRecord) {
+			this.add(currico);
+		}
+		
+		for(DrawArrow arr:ArrowRecord) {
+			/**
+			 * DRAW LINES ON JPANEL USING COORDINATES FROM AROWRECORD
+			 */
+		}
+		
+		this.repaint();
+	}
+	
 	@Override
 	public void dragEnter(DropTargetDragEvent dtde) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void dragOver(DropTargetDragEvent dtde) {
 		mousePos = dtde.getLocation();
@@ -58,7 +79,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	@Override
 	public void drop(DropTargetDropEvent dtde) {
 		String imgpth;
-		//GET TXFR DATA
+		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
 		try {
 			Transferable recvData = dtde.getTransferable();
 			if(recvData.isDataFlavorSupported(DataFlavor.stringFlavor)) {
@@ -66,12 +87,32 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 				imgpth = (String) recvData.getTransferData(DataFlavor.stringFlavor);
 				dtde.getDropTargetContext().dropComplete(true);
 				
-//				ADD ICON TO PANE
-				Point ms = MouseInfo.getPointerInfo().getLocation();
+//				ADD PROPERTIES
 				DraggableIcon temp = new DraggableIcon(imgpth, false);
 				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-				this.add(temp);
-				this.repaint();
+				
+				temp.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if (isNextPoint == true) {
+							previousPos = currentPos;
+							currentPos = e.getPoint();
+							System.out.println("" + currentPos + "  " + previousPos);
+							ArrowRecord.add(new DrawArrow(previousPos, currentPos));
+							isNextPoint = false;
+						}
+						if(isNextPoint==false) {
+							currentPos = e.getPoint();
+							isNextPoint = true;
+						} 
+						updatePanel();
+					}
+				});
+				
+//				ADD to Handler.
+				IconRecord.add(temp);
+				
+				updatePanel();
 				
 			} else {
 				dtde.rejectDrop();

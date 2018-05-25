@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Point;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -10,6 +11,8 @@ import java.awt.dnd.DragSourceDragEvent;
 import java.awt.dnd.DragSourceDropEvent;
 import java.awt.dnd.DragSourceEvent;
 import java.awt.dnd.DragSourceListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +28,7 @@ import javax.swing.JLabel;
 public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener{
 	DragSource dSource;
 	private String imgSource;
-	
+	private Point currentPos;
 	public DraggableIcon(String ImageSource, boolean draggable){
 		imgSource = ImageSource;
 		
@@ -41,7 +44,6 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		
 		
 	}
