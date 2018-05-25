@@ -26,15 +26,23 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	DragSource dSource;
 	private String imgSource;
 	
-	public DraggableIcon(String ImageSource) throws IOException {
+	public DraggableIcon(String ImageSource, boolean draggable){
 		imgSource = ImageSource;
 		
+		if(draggable) {
 		// Create Drag and Drop listener
 		dSource = new DragSource();
-		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this);
+		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
+		}
 		
 		// Set image of JLabel
-		this.setIcon(new ImageIcon(ImageIO.read(new File(imgSource))));
+		try {
+			this.setIcon(new ImageIcon(ImageIO.read(new File(imgSource))));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
 
