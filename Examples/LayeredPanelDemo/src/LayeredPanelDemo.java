@@ -88,7 +88,7 @@ public class LayeredPanelDemo extends JPanel
         for (int i = 0; i < layerStrings.length; i++) {
             JLabel label = createColoredLabel(layerStrings[i],
                                               layerColors[i], origin);
-            layeredPane.add(label, new Integer(i));
+            //layeredPane.add(label, new Integer(i));
             origin.x += offset;
             origin.y += offset;
         }
@@ -109,7 +109,7 @@ public class LayeredPanelDemo extends JPanel
 
         //Add control pane and layered pane to this JPanel.
         add(Box.createRigidArea(new Dimension(0, 10)));
-        add(createControlPanel());
+        //add(createControlPanel());
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(layeredPane);
     }
