@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -26,30 +27,49 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	public static Point previousPos;
 	public static boolean isNextPoint = false;
 	
+	
 	private ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>();
 	private ArrayList<DrawArrow> ArrowRecord = new ArrayList<DrawArrow>();
 	/**
 	 * Create the panel.
 	 */
-	
 	public DrawPanelTwo(){
 		setBackground(Color.WHITE);
-		new DropTarget(this, this);      
+		new DropTarget(this, this); 
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(isNextPoint == false) {
+					currentPos = e.getPoint();
+					isNextPoint = true;
+				}
+				if(isNextPoint == true) {
+					previousPos = currentPos;
+					currentPos = e.getPoint();
+					isNextPoint = false;
+					ArrowRecord.add(new DrawArrow(previousPos, currentPos));
+					drawPanelLines();
+					
+				}
+			}
+		});
+		
 	}
+	 
 	
 	public void updatePanel() {
 		this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
 			this.add(currico);
-		}
-		
-		for(DrawArrow arr:ArrowRecord) {
-			/**
-			 * DRAW LINES ON JPANEL USING COORDINATES FROM AROWRECORD
-			 */
-		}
-		
+		}		
 		this.repaint();
+	}
+	public void drawPanelLines() {
+		for(DrawArrow arr:ArrowRecord) {
+			arr.setBounds(arr.pointA.x ,arr.pointA.y, 870, 485);
+			this.add(arr);
+			this.repaint();
+		}
 	}
 	
 	@Override
@@ -91,23 +111,6 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 				DraggableIcon temp = new DraggableIcon(imgpth, false);
 				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
 				
-				temp.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						if (isNextPoint == true) {
-							previousPos = currentPos;
-							currentPos = e.getPoint();
-							System.out.println("" + currentPos + "  " + previousPos);
-							ArrowRecord.add(new DrawArrow(previousPos, currentPos));
-							isNextPoint = false;
-						}
-						if(isNextPoint==false) {
-							currentPos = e.getPoint();
-							isNextPoint = true;
-						} 
-						updatePanel();
-					}
-				});
 				
 //				ADD to Handler.
 				IconRecord.add(temp);
