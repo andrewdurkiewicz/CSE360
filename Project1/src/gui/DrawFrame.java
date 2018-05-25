@@ -3,11 +3,17 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
 import java.awt.Color;
 
+/**
+ * 
+ * @author Cody
+ * GUI class.
+ * This is the top level class of the gui. 
+ * <br>
+ * -Is called by JUML
+ */
 
-@SuppressWarnings("serial")//TODO: Remove
 public class DrawFrame extends JFrame {
 	private JFrame mainWindow;
 	private JPanel	contentPane;
@@ -25,9 +31,8 @@ public class DrawFrame extends JFrame {
 	 * Creates GUI objects and populates the gui with UI Components
 	 */
 	private void initialize() {
-		/**
-		 * Create Basic structure and assign the properties of the JFrame and Main Content Pane
-		 */
+		
+		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setTitle("JavaDraw GUI");
@@ -46,12 +51,6 @@ public class DrawFrame extends JFrame {
 		//Add Panel Two
 		DrawPanelTwo dpTwo = new DrawPanelTwo();
 		dpTwo.setBounds(10, 120, 870, 485);
-		contentPane.add(dpTwo);
-		
-		
-		
-				
+		contentPane.add(dpTwo);		
 	}
-	
-
 }
