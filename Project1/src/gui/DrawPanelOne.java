@@ -7,10 +7,11 @@ import java.awt.Dimension;
 public class DrawPanelOne extends JPanel{
 
 private int height, width;
-public JLabel oval;
-public JLabel triangle;
-public JLabel rectangle;
-public JLabel star;
+public OvalLabel oval;
+public TriLabel triangle;
+public RectLabel rectangle;
+public StarLabel star;
+public DiamondLabel diamond;
 
    public DrawPanelOne(){
       super();
@@ -21,10 +22,12 @@ public JLabel star;
       triangle = new TriLabel();
       rectangle = new RectLabel();
       star = new StarLabel();
+      diamond = new DiamondLabel();
       super.add(oval);
       super.add(triangle);
       super.add(rectangle);
       super.add(star);
+      super.add(diamond);
       
    }
    
