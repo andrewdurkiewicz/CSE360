@@ -1,34 +1,22 @@
 package gui;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import java.awt.Color;
-import java.awt.Dimension;
+
+
 
 public class DrawPanelOne extends JPanel{
+	public DrawPanelOne(){
+		setBackground(Color.white);
+		setLayout(null);
+		DraggableIcon circle = new DraggableIcon("src/resources/Black_Circle.png", true);
+		circle.setBounds(12,0,171, 105);
+		this.add(circle);
+		
+		DraggableIcon triangle = new DraggableIcon("src/resources/100px-Simple_triangle.png", true);
+		triangle.setBounds(183, 0, 171, 105);
+		this.add(triangle);
+		
+		
+	}
 
-private int height, width;
-public OvalLabel oval;
-public TriLabel triangle;
-public RectLabel rectangle;
-public StarLabel star;
-public DiamondLabel diamond;
-
-   public DrawPanelOne(){
-      super();
-      super.setVisible(true);
-      super.setBackground(Color.WHITE);
-   
-      oval = new OvalLabel();
-      triangle = new TriLabel();
-      rectangle = new RectLabel();
-      star = new StarLabel();
-      diamond = new DiamondLabel();
-      super.add(oval);
-      super.add(triangle);
-      super.add(rectangle);
-      super.add(star);
-      super.add(diamond);
-      
-   }
-   
 }
