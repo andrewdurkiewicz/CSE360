@@ -16,7 +16,13 @@ public class DrawPanelOne extends JPanel{
 		triangle.setBounds(183, 0, 171, 105);
 		this.add(triangle);
 		
+		DraggableIcon rectangle = new DraggableIcon("src/resources/rectangle.png", true);
+		rectangle.setBounds(354, 0, 171, 105);
+		this.add(rectangle);
 		
+		DraggableIcon star = new DraggableIcon("src/resources/star.png", true);
+		star.setBounds(525, 0, 171, 105);
+		this.add(star);
 	}
 
 }
