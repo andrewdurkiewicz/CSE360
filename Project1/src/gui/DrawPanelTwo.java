@@ -24,8 +24,8 @@ import java.awt.event.MouseMotionAdapter;
 public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private Point mousePos;
 	public static Point currentPos;
-	public static Point previousPos;
-	public static boolean isNextPoint = false;
+	public static Point nextPos;
+	public static int state = 0;
 	
 	
 	private ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>();
@@ -36,21 +36,24 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	public DrawPanelTwo(){
 		setBackground(Color.WHITE);
 		new DropTarget(this, this); 
+		
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(isNextPoint == false) {
+				if(state==0) {
 					currentPos = e.getPoint();
-					isNextPoint = true;
 				}
-				if(isNextPoint == true) {
-					previousPos = currentPos;
-					currentPos = e.getPoint();
-					isNextPoint = false;
-					ArrowRecord.add(new DrawArrow(previousPos, currentPos));
-					drawPanelLines();
-					
+				
+				if(state==1) {
+					nextPos = e.getPoint();
 				}
+				state++;
+				if(state==2) {
+					ArrowRecord.add(new DrawArrow(currentPos, nextPos));
+					state=0;
+					updatePanel();
+				}
+				
 			}
 		});
 		
@@ -61,14 +64,14 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 		this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
 			this.add(currico);
-		}		
+		}
+		drawPanelLines();
 		this.repaint();
 	}
 	public void drawPanelLines() {
 		for(DrawArrow arr:ArrowRecord) {
-			arr.setBounds(arr.pointA.x ,arr.pointA.y, 870, 485);
+			arr.setBounds(0,0, 870, 485);
 			this.add(arr);
-			this.repaint();
 		}
 	}
 	
