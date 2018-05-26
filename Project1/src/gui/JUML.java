@@ -1,3 +1,5 @@
+// Author: Andrew
+
 package gui;
 import java.awt.EventQueue;
 /**

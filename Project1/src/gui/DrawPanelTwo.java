@@ -1,3 +1,5 @@
+// Author: Cody
+
 package gui;
 
 import java.awt.Color;
@@ -58,7 +60,7 @@ public void drawLineHelper(Point prev, Point next){
 	{
 		boolean twoPoints = false;
 		boolean lineDrawn = false;
-	    
+		
 		@Override
 	    public void mousePressed(MouseEvent e)
 	    {
@@ -79,12 +81,14 @@ public void drawLineHelper(Point prev, Point next){
 	       		   prevPoint = null;
 	       		   nextPoint = null;
         	   }
+	       	   twoPoints = false;
 	       	}
 	     }
+		
     }
 	
 	public void updatePanel() {
-		this.removeAll();
+		//this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
 			this.add(currico);
 			
