@@ -44,7 +44,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 					currentPos = e.getPoint();
 				}
 				
-				if(state==1) {
+				else if(state==1) {
 					nextPos = e.getPoint();
 				}
 				state++;
