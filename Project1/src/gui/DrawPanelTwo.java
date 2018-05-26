@@ -26,6 +26,11 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	public static Point currentPos;
 	public static Point nextPos;
 	public static int state = 0;
+	private Point prevPoint = new Point();
+	private Point nextPoint = new Point();
+	private boolean drawing;
+	private MouseHandler mouseHandler = new MouseHandler();
+
 	
 	
 	private ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>();
@@ -34,31 +39,48 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	 * Create the panel.
 	 */
 	public DrawPanelTwo(){
+		
 		setBackground(Color.WHITE);
 		new DropTarget(this, this); 
-		
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(state==0) {
-					currentPos = e.getPoint();
-				}
-				
-				else if(state==1) {
-					nextPos = e.getPoint();
-				}
-				state++;
-				if(state==2) {
-					ArrowRecord.add(new DrawArrow(currentPos, nextPos));
-					state=0;
-					updatePanel();
-				}
-				
-			}
-		});
+		this.addMouseListener(mouseHandler);
+        this.addMouseMotionListener(mouseHandler);
 		
 	}
 	 
+public void drawLineHelper(Point prev, Point next){
+        
+        Graphics g = getGraphics();
+        g.setColor(Color.black);
+        g.drawLine(prevPoint.x, prevPoint.y, nextPoint.x, nextPoint.y);
+	}
+	
+    private class MouseHandler extends MouseAdapter 
+	{
+		boolean twoPoints = false;
+		boolean lineDrawn = false;
+	    
+		@Override
+	    public void mousePressed(MouseEvent e)
+	    {
+			if(twoPoints == false)
+	        {
+	      	   nextPoint = e.getPoint();
+	       	   twoPoints = true;
+            }
+            else
+            {
+	       	   prevPoint = nextPoint;
+	       	   nextPoint = e.getPoint();
+	       	   drawLineHelper(prevPoint, nextPoint);
+	       	   lineDrawn = true;
+	       	   if(lineDrawn == true)
+	       	   {
+	       		   prevPoint = null;
+	       		   nextPoint = null;
+        	   }
+	       	}
+	     }
+    }
 	
 	public void updatePanel() {
 		this.removeAll();
