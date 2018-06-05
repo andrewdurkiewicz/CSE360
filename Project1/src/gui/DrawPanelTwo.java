@@ -73,6 +73,7 @@ public void drawLineHelper(Point prev, Point next){
 	       	   nextPoint = e.getPoint();
 	       	   drawLineHelper(prevPoint, nextPoint);
 	       	   lineDrawn = true;
+	       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
 	       	   if(lineDrawn == true)
 	       	   {
 	       		   prevPoint = null;
@@ -86,6 +87,7 @@ public void drawLineHelper(Point prev, Point next){
 		this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
 			this.add(currico);
+			
 		}
 		drawPanelLines();
 		this.repaint();
