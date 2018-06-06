@@ -15,12 +15,16 @@ import java.awt.dnd.DragSourceEvent;
 import java.awt.dnd.DragSourceListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 
 /**
  * Implements Drag and Drop handling on a JLabel.
@@ -31,6 +35,10 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	DragSource dSource;
 	private String imgSource;
 	private Point currentPos;
+	private int x;
+	private int y;
+
+	
 	public DraggableIcon(String ImageSource, boolean draggable){
 		imgSource = ImageSource;
 		
@@ -39,7 +47,6 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		dSource = new DragSource();
 		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
 		}
-		
 		// Set image of JLabel
 		try {
 			this.setIcon(new ImageIcon(ImageIO.read(new File(imgSource))));

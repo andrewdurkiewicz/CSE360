@@ -19,8 +19,12 @@ import java.awt.dnd.DropTargetListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+
+import com.sun.org.apache.xpath.internal.operations.And;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 
 public class DrawPanelTwo extends JPanel implements DropTargetListener{
@@ -48,6 +52,10 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
         this.addMouseMotionListener(mouseHandler);
 		
 	}
+	
+
+		
+	
 	 
 public void drawLineHelper(Point prev, Point next){
         
@@ -55,12 +63,10 @@ public void drawLineHelper(Point prev, Point next){
         g.setColor(Color.black);
         g.drawLine(prevPoint.x, prevPoint.y, nextPoint.x, nextPoint.y);
 	}
-	
     private class MouseHandler extends MouseAdapter 
 	{
 		boolean twoPoints = false;
 		boolean lineDrawn = false;
-		
 		@Override
 	    public void mousePressed(MouseEvent e)
 	    {
@@ -84,8 +90,9 @@ public void drawLineHelper(Point prev, Point next){
 	       	   twoPoints = false;
 	       	}
 	     }
+		}
 		
-    }
+    
 	
 	public void updatePanel() {
 		//this.removeAll();
@@ -144,6 +151,7 @@ public void drawLineHelper(Point prev, Point next){
 				
 				
 //				ADD to Handler.
+				temp.addMouseListener(mouseHandler);
 				IconRecord.add(temp);
 				
 				updatePanel();
@@ -157,6 +165,7 @@ public void drawLineHelper(Point prev, Point next){
 		}
 
 	  }
-	
+
 
 }
+
