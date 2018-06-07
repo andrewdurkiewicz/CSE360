@@ -14,6 +14,7 @@ public class DrawPanelOne extends JPanel{
 	public DrawPanelOne(){
 		setBackground(Color.white);
 		setLayout(new FlowLayout(FlowLayout.LEFT,50,18));
+
 		DraggableIcon circle = new DraggableIcon("resources//Black_Circle.png", true);
 		//circle.setBounds(12,0,171, 105);*This does nothing no need for it
 		this.add(circle);
@@ -30,7 +31,6 @@ public class DrawPanelOne extends JPanel{
 		//star.setBounds(525, 0, 171, 105);*This does nothing no need for it
 		this.add(star);
 		
-
 	
 	}
 
