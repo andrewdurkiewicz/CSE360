@@ -50,22 +50,17 @@ public class DrawFrame extends JFrame {
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setTitle("JavaDraw GUI");
 		mainWindow.setLayout(new GridLayout(1, 2));
-
 		contentPane = new JPanel();
-		JPanel ButtonPanel = new JPanel();
+		
 		contentPane.setLayout(new GridLayout(2, 1));
 		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//mainWindow.setContentPane(contentPane);
 		
-		ButtonPanel ourButtons = new ButtonPanel();
-		ourButtons.setBounds(10, 10, 870, 100);
-		
-		ButtonPanel.add(ourButtons,BorderLayout.CENTER);
+	
 		
 		//Add Panel One
 		DrawPanelOne dpOne = new DrawPanelOne(); 
-		
+		dpOne.setBounds(10,10,870,100);
 		contentPane.add(dpOne);
 		
 		//Add Panel Two
@@ -73,10 +68,21 @@ public class DrawFrame extends JFrame {
 		dpTwo.setBounds(10, 120, 870, 485);
 		dpTwo.setBorder(BorderFactory.createLineBorder(Color.black));
 		contentPane.add(dpTwo);	
+		
+		//Create and Add Button Panel
+		JPanel bp = new JPanel();
+		bp.setLayout(new GridLayout(1,3));
+		mainWindow.add(bp);
+		
+		ButtonPanel ourButtons = new ButtonPanel();
+		bp.add(ourButtons);
+		
+		
+		
 
 
 		mainWindow.add(contentPane);
-		mainWindow.add(ButtonPanel);
+		
 
 	}
 }
