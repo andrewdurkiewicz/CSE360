@@ -1,2 +1,0 @@
-INDEX VERSION 1.127+/Users/Zach-Carnago/Desktop/CSE360/.metadata/.plugins/org.eclipse.jdt.core
-1175494123.index
