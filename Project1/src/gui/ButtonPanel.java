@@ -4,6 +4,7 @@ import java.awt.Color;
 public class ButtonPanel extends JPanel {
 	public ButtonPanel()
 	{
+		setBackground(Color.blue);
 		
 	}
 

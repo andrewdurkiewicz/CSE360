@@ -3,13 +3,14 @@
 package gui;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.GridLayout;
 
 
 
 public class DrawPanelOne extends JPanel{
 	public DrawPanelOne(){
 		setBackground(Color.white);
-		setLayout(null);
+		setLayout(new GridLayout(0,5));
 		DraggableIcon circle = new DraggableIcon("resources//Black_Circle.png", true);
 		circle.setBounds(12,0,171, 105);
 		this.add(circle);
@@ -25,6 +26,10 @@ public class DrawPanelOne extends JPanel{
 		DraggableIcon star = new DraggableIcon("resources//star.png", true);
 		star.setBounds(525, 0, 171, 105);
 		this.add(star);
+		
+		ButtonPanel ourButtons = new ButtonPanel();
+		this.add(ourButtons);
+	
 	}
 
 }
