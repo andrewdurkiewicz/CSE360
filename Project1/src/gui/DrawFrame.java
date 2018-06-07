@@ -6,11 +6,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.sun.media.jfxmedia.events.NewFrameEvent;
 import com.sun.org.apache.bcel.internal.generic.NEW;
+
+import javafx.scene.layout.Border;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -46,43 +52,39 @@ public class DrawFrame extends JFrame {
 		
 		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
-		mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		mainWindow.setSize(new Dimension(1050, 750)); //Needs to be a bit over the sum of all componen
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setTitle("JavaDraw GUI");
-		mainWindow.setLayout(new GridLayout(1, 2));
+		mainWindow.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+		
+		
 		contentPane = new JPanel();
-		
-		contentPane.setLayout(new GridLayout(2, 1));
+		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER,0,0)); 
 		contentPane.setBackground(Color.GRAY);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
-	
+
 		
-		//Add Panel One
-		DrawPanelOne dpOne = new DrawPanelOne(); 
-		dpOne.setBounds(10,10,870,100);
-		contentPane.add(dpOne);
-		
-		//Add Panel Two
-		DrawPanelTwo dpTwo = new DrawPanelTwo();
-		dpTwo.setBounds(10, 120, 870, 485);
+		DrawPanelOne dpOne = new DrawPanelOne(); //panel1
+		DrawPanelTwo dpTwo = new DrawPanelTwo(); //panel2
+		contentPane.setPreferredSize(new Dimension(700, 800));
+		dpOne.setPreferredSize(new Dimension(700,150));
+		dpTwo.setPreferredSize(new Dimension(700,650));
+
+		dpOne.setBorder(BorderFactory.createLineBorder(Color.black));
 		dpTwo.setBorder(BorderFactory.createLineBorder(Color.black));
+		contentPane.add(dpOne);
 		contentPane.add(dpTwo);	
+		mainWindow.add(contentPane, BorderLayout.CENTER);
 		
-		//Create and Add Button Panel
+		
 		JPanel bp = new JPanel();
-		bp.setLayout(new GridLayout(1,3));
-		mainWindow.add(bp);
-		
+		bp.setLayout(new GridLayout(1, 1));
+		bp.setPreferredSize(new Dimension(300, 800));
 		ButtonPanel ourButtons = new ButtonPanel();
+		ourButtons.setPreferredSize(new Dimension(300,800));
 		bp.add(ourButtons);
-		
-		
-		
-
-
-		mainWindow.add(contentPane);
-		
-
+		mainWindow.add(bp,BorderLayout.CENTER);
+		pack();
 	}
 }
