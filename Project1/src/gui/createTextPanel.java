@@ -76,7 +76,7 @@ public class createTextPanel extends JPanel{
 		
 		
 		
-		JButton complete = new JButton("Complete");
+		JButton editColor = new JButton("Edit Color");
 		JButton clear = new JButton("Clear Text");
 		clear.addActionListener(new ActionListener() {
 			
@@ -121,11 +121,25 @@ public class createTextPanel extends JPanel{
 				}
 			}
 		});
-		
+		editColor.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				changeColorPanel changeC = new changeColorPanel();
+				JFrame colorFrame = new JFrame();
+				colorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				colorFrame.setSize(650,300);
+				colorFrame.add(changeC);
+				colorFrame.setVisible(true);
+				
+			}
+		});
 		editFont.add(en_italic);
 		editFont.add(en_bold);
-		editFont.add(complete);
+		editFont.add(editColor);
 		editFont.add(clear);
+
 		
 		JComboBox<String> fontfamily = new JComboBox<>(families);
 		fontfamily.addItemListener(new ItemListener() {

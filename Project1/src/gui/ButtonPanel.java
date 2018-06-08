@@ -2,6 +2,7 @@
 package gui;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
