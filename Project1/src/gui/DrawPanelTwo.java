@@ -2,9 +2,11 @@
 
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -54,7 +56,15 @@ public void drawLineHelper(Point prev, Point next){
         
         Graphics g = getGraphics();
         g.setColor(Color.black);
-        g.drawLine(prevPoint.x, prevPoint.y, nextPoint.x, nextPoint.y);
+        Graphics2D g2d = (Graphics2D) g.create();
+        
+        if (false)
+        {
+        	g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0));
+        }
+        
+        g2d.drawLine(prevPoint.x, prevPoint.y, nextPoint.x, nextPoint.y);
+        g2d.dispose();
 	}
 	
     private class MouseHandler extends MouseAdapter 
@@ -76,7 +86,7 @@ public void drawLineHelper(Point prev, Point next){
 	       	   nextPoint = e.getPoint();
 	       	   drawLineHelper(prevPoint, nextPoint);
 	       	   lineDrawn = true;
-	       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
+	       	   //ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
 	       	   if(lineDrawn == true)
 	       	   {
 	       		   prevPoint = null;
@@ -94,7 +104,7 @@ public void drawLineHelper(Point prev, Point next){
 			this.add(currico);
 			
 		}
-		drawPanelLines();
+		//drawPanelLines();
 		this.repaint();
 	}
 	public void drawPanelLines() {
