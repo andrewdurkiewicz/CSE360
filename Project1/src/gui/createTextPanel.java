@@ -126,13 +126,9 @@ public class createTextPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				changeColorPanel changeC = new changeColorPanel();
-				JFrame colorFrame = new JFrame();
-				colorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				colorFrame.setSize(650,300);
-				colorFrame.add(changeC);
-				colorFrame.setVisible(true);
-				
+				Color c = JColorChooser.showDialog(null, "Choose Color", Color.black);
+				System.out.println(c);
+				textInput.setForeground(c);
 			}
 		});
 		editFont.add(en_italic);
