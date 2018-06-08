@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 
 
 public class createTextPanel extends JPanel{
-
+	String[] families = { "Serif", "SansSerif", "Monospaced" };
 	Font de_font = new Font("Serif", Font.PLAIN, 18);
 	public createTextPanel(){
 		this.setLayout(new GridLayout(3,1));
@@ -71,7 +71,7 @@ public class createTextPanel extends JPanel{
 		JButton en_bold = new JButton("Bold");
 		JPanel editFont = new JPanel();
 		editFont.setLayout(new FlowLayout());
-
+		
 		
 		
 		JButton complete = new JButton("Complete");
@@ -99,8 +99,6 @@ public class createTextPanel extends JPanel{
 			
 			}
 		});
-		//add to panel
-		
 		en_italic.addActionListener(new ActionListener() {
 			
 			@Override
@@ -121,6 +119,9 @@ public class createTextPanel extends JPanel{
 		editFont.add(en_bold);
 		editFont.add(complete);
 		editFont.add(clear);
+		
+		JComboBox<String> fontfamily = new JComboBox<>(families);
+		editFont.add(fontfamily);
 		this.add(textInput);
 		this.add(editFont);
 		
