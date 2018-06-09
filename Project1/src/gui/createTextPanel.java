@@ -1,31 +1,38 @@
 //Andrew
 package gui;
 
-import java.awt.Button;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.Font;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
 
 
 public class createTextPanel extends JPanel{
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
 	Font de_font = new Font("Serif", Font.PLAIN, 18);
+	int[] s_values = {8, 12, 18, 20, 22, 48};
+	String[] s_names = {"8", "10", "12", "14", "16"};
+	Border border = BorderFactory.createLineBorder(Color.BLACK);
+
 	public createTextPanel(){
-		this.setLayout(new GridLayout(3,1));
-		JTextArea textInput = new JTextArea();
+		this.setLayout(new GridLayout(2,1));
+		
+		JPanel textPanel = new JPanel();
+		JTextArea textInput = new JTextArea(5,15);
 		textInput.setLineWrap(true);
+		textInput.setBorder(BorderFactory.createCompoundBorder(border,
+				BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+		
 		textInput.setFont(de_font);
 		textInput.setText("Type here....");
 
@@ -136,8 +143,8 @@ public class createTextPanel extends JPanel{
 		editFont.add(editColor);
 		editFont.add(clear);
 
-		
 		JComboBox<String> fontfamily = new JComboBox<>(families);
+		JComboBox<String> sizeValues = new JComboBox<>(s_names);
 		fontfamily.addItemListener(new ItemListener() {
 			int getFont = textInput.getFont().getStyle();
 			String family = textInput.getFont().getFamily();
@@ -152,10 +159,25 @@ public class createTextPanel extends JPanel{
 				}
 			}
 		});
-		editFont.add(fontfamily);
-		this.add(textInput);
-		this.add(editFont);
+		sizeValues.addItemListener(new ItemListener() {
+			int getFont = textInput.getFont().getStyle();
+			String family = textInput.getFont().getFamily();
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				String changeSize = (String) e.getItem();
+				textInput.setFont(new Font(family, getFont, Integer.valueOf(changeSize)));
+
+			}
+		});
 		
+		
+		textPanel.add(textInput,BorderLayout.CENTER);
+		editFont.add(fontfamily);
+		editFont.add(sizeValues);
+		this.add(textPanel);
+		this.add(editFont);
 	}
+	
 
 }
