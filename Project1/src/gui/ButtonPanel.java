@@ -16,8 +16,8 @@ public class ButtonPanel extends JPanel {
 	{
 		setBackground(Color.blue);
 		this.setLayout(new GridLayout(2, 1));
-		this.add(new createArrowPanel(), BorderLayout.NORTH);
-		this.add(new createTextPanel(), BorderLayout.SOUTH);
+		this.add(new createArrowPanel(), BorderLayout.CENTER);
+		this.add(new createTextPanel(), BorderLayout.CENTER);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	
 	}
