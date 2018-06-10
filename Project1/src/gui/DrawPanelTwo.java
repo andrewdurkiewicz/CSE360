@@ -52,7 +52,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 public void drawLineHelper(Point prev, Point next){
         
         Graphics g = getGraphics();
-        g.setColor(Color.black)
+        g.setColor(Color.black);
           
         g.drawLine(prevPoint.x+50, prevPoint.y+50, nextPoint.x+50, nextPoint.y+50);
 

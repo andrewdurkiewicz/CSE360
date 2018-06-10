@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
+
  * Implements Drag and Drop handling on a JLabel.
  * <p>Is a JLabel component with drag and drop listeners implemented</p> 
  * @author Cody
@@ -31,6 +32,9 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	DragSource dSource;
 	private String imgSource;
 	private Point currentPos;
+	public Point dragPoint() {
+		return this.getLocation();
+	}
 	public DraggableIcon(String ImageSource, boolean draggable){
 		imgSource = ImageSource;
 		
