@@ -2,12 +2,9 @@
 
 package gui;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.datatransfer.DataFlavor;
@@ -55,16 +52,10 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 public void drawLineHelper(Point prev, Point next){
         
         Graphics g = getGraphics();
-        g.setColor(Color.black);
-        Graphics2D g2d = (Graphics2D) g.create();
-        
-        if (false)
-        {
-        	g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0));
-        }
-        
-        g2d.drawLine(prevPoint.x, prevPoint.y, nextPoint.x, nextPoint.y);
-        g2d.dispose();
+        g.setColor(Color.black)
+          
+        g.drawLine(prevPoint.x+50, prevPoint.y+50, nextPoint.x+50, nextPoint.y+50);
+
 	}
 	
     private class MouseHandler extends MouseAdapter 
@@ -75,25 +66,33 @@ public void drawLineHelper(Point prev, Point next){
 		@Override
 	    public void mousePressed(MouseEvent e)
 	    {
-			if(twoPoints == false)
-	        {
-	      	   nextPoint = e.getPoint();
-	       	   twoPoints = true;
-            }
-            else
-            {
-	       	   prevPoint = nextPoint;
-	       	   nextPoint = e.getPoint();
-	       	   drawLineHelper(prevPoint, nextPoint);
-	       	   lineDrawn = true;
-	       	   //ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
-	       	   if(lineDrawn == true)
-	       	   {
-	       		   prevPoint = null;
-	       		   nextPoint = null;
-        	   }
-	       	   twoPoints = false;
-	       	}
+			Object obj = e.getSource();
+
+			if(obj.getClass().getSimpleName().equals("DraggableIcon"))
+			{
+				
+				DraggableIcon thisIcon = (DraggableIcon)obj;
+				System.out.print(thisIcon.dragPoint());
+				if(twoPoints == false)
+		        {
+		      	   nextPoint = thisIcon.dragPoint();
+		       	   twoPoints = true;
+	            }
+	            else
+	            {
+		       	   prevPoint = nextPoint;
+		       	   nextPoint = thisIcon.dragPoint();
+		       	   drawLineHelper(prevPoint, nextPoint);
+		       	   lineDrawn = true;
+		       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
+		       	   if(lineDrawn == true)
+		       	   {
+		       		   prevPoint = null;
+		       		   nextPoint = null;
+	        	   }
+		       	   twoPoints = false;
+		       	}
+			}
 	     }
 		
     }
@@ -104,7 +103,7 @@ public void drawLineHelper(Point prev, Point next){
 			this.add(currico);
 			
 		}
-		//drawPanelLines();
+		drawPanelLines();
 		this.repaint();
 	}
 	public void drawPanelLines() {
@@ -152,8 +151,8 @@ public void drawLineHelper(Point prev, Point next){
 //				ADD PROPERTIES
 				DraggableIcon temp = new DraggableIcon(imgpth, false);
 				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-				
-				
+				temp.addMouseListener(mouseHandler);
+
 //				ADD to Handler.
 				IconRecord.add(temp);
 				

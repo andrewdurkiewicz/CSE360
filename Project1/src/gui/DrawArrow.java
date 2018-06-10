@@ -4,8 +4,6 @@ package gui;
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.BasicStroke;
-import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 
@@ -21,16 +19,7 @@ public class DrawArrow extends JLabel{
 	}
 	
 	public void paintComponent(Graphics g) {
-		//g.drawLine(pointA.x, pointA.y, pointB.x,pointB.y);
-		
-		Graphics2D g2d = (Graphics2D) g.create();
-
-        //set the stroke of the copy, not the original 
-        g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0));
-        g2d.drawLine(pointA.x, pointA.y, pointB.x,pointB.y);
-
-        //gets rid of the copy
-        g2d.dispose();
+		g.drawLine(pointA.x+50, pointA.y+50, pointB.x+50,pointB.y+50);
 	}
 	
 
@@ -38,5 +27,4 @@ public class DrawArrow extends JLabel{
 		pointA = A;
 		pointB = B;
 	}
-	
 }
