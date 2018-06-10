@@ -19,7 +19,7 @@ public class DrawArrow extends JLabel{
 	}
 	
 	public void paintComponent(Graphics g) {
-		g.drawLine(pointA.x, pointA.y, pointB.x,pointB.y);
+		g.drawLine(pointA.x+50, pointA.y+50, pointB.x+50,pointB.y+50);
 	}
 	
 
