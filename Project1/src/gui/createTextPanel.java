@@ -160,7 +160,6 @@ public class createTextPanel extends JPanel{
 		JComboBox<String> sizeValues = new JComboBox<>(s_names);
 		fontfamily.addItemListener(new ItemListener() {
 			int getFont = textInput.getFont().getStyle();
-			String family = textInput.getFont().getFamily();
 			int size = textInput.getFont().getSize();
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -190,6 +189,7 @@ public class createTextPanel extends JPanel{
 		editFont.add(sizeValues);
 		this.add(textPanel);
 		this.add(editFont);
+		this.setIgnoreRepaint(true);
 	}
 	
 

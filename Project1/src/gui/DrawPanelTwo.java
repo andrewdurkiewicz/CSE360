@@ -91,7 +91,7 @@ public void drawLineHelper(Point prev, Point next){
     }
 	
 	public void updatePanel() {
-		//this.removeAll();
+		this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
 			this.add(currico);
 			
@@ -135,6 +135,7 @@ public void drawLineHelper(Point prev, Point next){
 		String imgpth;
 		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
 		try {
+			
 			Transferable recvData = dtde.getTransferable();
 			if(recvData.isDataFlavorSupported(DataFlavor.stringFlavor)) {
 				dtde.acceptDrop(DnDConstants.ACTION_MOVE);

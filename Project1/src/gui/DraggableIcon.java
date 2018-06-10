@@ -40,7 +40,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		if(draggable) {
 		// Create Drag and Drop listener
 		dSource = new DragSource();
-		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
+		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this);
 		}
 		
 		// Set image of JLabel
@@ -93,7 +93,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		// Do Nothing, required due to implemented class
 		this.point = new Point(dsde.getX() ,dsde.getY());
 		System.out.println(point);
-		this.setLocation(point);
+		
 	
 	}
 	
