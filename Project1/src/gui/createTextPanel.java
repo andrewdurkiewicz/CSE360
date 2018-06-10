@@ -107,12 +107,14 @@ public class createTextPanel extends JPanel{
 		});
 		
 		en_bold.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				int getFont = textInput.getFont().getStyle();
 				String family = textInput.getFont().getFamily();
 				int size = textInput.getFont().getSize();
+				
 				if(textInput.getFont().isBold() != true) {
 					textInput.setFont(new Font(family, getFont + Font.BOLD, 18));
 				}
@@ -158,6 +160,7 @@ public class createTextPanel extends JPanel{
 		JComboBox<String> sizeValues = new JComboBox<>(s_names);
 		fontfamily.addItemListener(new ItemListener() {
 			int getFont = textInput.getFont().getStyle();
+			String family = textInput.getFont().getFamily();
 			int size = textInput.getFont().getSize();
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -187,8 +190,6 @@ public class createTextPanel extends JPanel{
 		editFont.add(sizeValues);
 		this.add(textPanel);
 		this.add(editFont);
-	
-		this.setIgnoreRepaint(true);
 	}
 	
 

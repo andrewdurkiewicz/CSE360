@@ -13,8 +13,11 @@ import java.awt.dnd.DragSourceDragEvent;
 import java.awt.dnd.DragSourceDropEvent;
 import java.awt.dnd.DragSourceEvent;
 import java.awt.dnd.DragSourceListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -24,23 +27,17 @@ import javax.swing.JLabel;
  * <p>Is a JLabel component with drag and drop listeners implemented</p> 
  * @author Cody
  */
-@SuppressWarnings("serial")
 public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener{
 	DragSource dSource;
 	private String imgSource;
-	private Point point;
-	
-	
-	public Point dragPoint() {
-		return this.getLocation();
-	}
+	private Point currentPos;
 	public DraggableIcon(String ImageSource, boolean draggable){
 		imgSource = ImageSource;
 		
 		if(draggable) {
 		// Create Drag and Drop listener
 		dSource = new DragSource();
-		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this);
+		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
 		}
 		
 		// Set image of JLabel
@@ -57,7 +54,6 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	public void dragGestureRecognized(DragGestureEvent dge) {
 		Transferable txfr = new StringSelection(imgSource);
 		dSource.startDrag(dge, DragSource.DefaultCopyDrop, txfr, this);
-		
 	}
 
 	public void setImgSource(String srcImg) {
@@ -91,12 +87,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	@Override
 	public void dragDropEnd(DragSourceDropEvent dsde) {
 		// Do Nothing, required due to implemented class
-		this.point = new Point(dsde.getX() ,dsde.getY());
-		System.out.println(point);
 		
-	
 	}
-	
-
 
 }

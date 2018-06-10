@@ -50,7 +50,7 @@ public class DrawFrame extends JFrame {
 		
 		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
-		mainWindow.setSize(new Dimension(1050, 850)); 
+		mainWindow.setSize(new Dimension(1050, 850)); //Needs to be a bit over the sum of all componen
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setTitle("JavaDraw GUI");
 		mainWindow.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
