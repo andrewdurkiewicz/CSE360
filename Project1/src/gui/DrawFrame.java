@@ -47,7 +47,7 @@ public class DrawFrame extends JFrame {
 	 * Creates GUI objects and populates the gui with UI Components
 	 */
 	private void initialize() {
-		
+		//potato
 		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
 		mainWindow.setSize(new Dimension(1050, 850)); //Needs to be a bit over the sum of all componen
