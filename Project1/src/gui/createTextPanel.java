@@ -182,13 +182,15 @@ public class createTextPanel extends JPanel{
 		});
 		
 		
+		editFont.setIgnoreRepaint(true);
+		textPanel.setIgnoreRepaint(true);
+		this.setIgnoreRepaint(true);
+		
 		textPanel.add(textInput,BorderLayout.CENTER);
 		editFont.add(fontfamily);
 		editFont.add(sizeValues);
 		this.add(textPanel);
 		this.add(editFont);
-	
-		this.setIgnoreRepaint(true);
 	}
 	
 

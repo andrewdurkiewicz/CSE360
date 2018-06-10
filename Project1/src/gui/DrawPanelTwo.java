@@ -147,7 +147,7 @@ public void drawLineHelper(Point prev, Point next){
 				
 //				ADD PROPERTIES
 				DraggableIcon temp = new DraggableIcon(imgpth, false);
-				temp.setBounds(mousePos.x - 50, mousePos.y - 50, 100, 100);
+				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
 				temp.addMouseListener(mouseHandler);
 //				ADD to Handler.
 				IconRecord.add(temp);
