@@ -15,6 +15,7 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -62,8 +63,10 @@ public void drawLineHelper(Point prev, Point next){
 	    public void mousePressed(MouseEvent e)
 	    {
 			Object obj = e.getSource();
-			if(obj instanceof DraggableIcon) 
+
+			if(obj.getClass().getSimpleName().equals("DraggableIcon"))
 			{
+				
 				DraggableIcon thisIcon = (DraggableIcon)obj;
 				System.out.print(thisIcon.dragPoint());
 				if(twoPoints == false)
