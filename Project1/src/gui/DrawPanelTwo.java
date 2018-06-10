@@ -4,12 +4,10 @@ package gui;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -20,11 +18,12 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 
+@SuppressWarnings("serial")
 public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private Point mousePos;
 	public static Point currentPos;
@@ -32,7 +31,6 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	public static int state = 0;
 	private Point prevPoint = new Point();
 	private Point nextPoint = new Point();
-	private boolean drawing;
 	private MouseHandler mouseHandler = new MouseHandler();
 
 	
@@ -56,6 +54,8 @@ public void drawLineHelper(Point prev, Point next){
         
         Graphics g = getGraphics();
         g.setColor(Color.black);
+        //g.drawLine(prevPoint.x+50, prevPoint.y+50, nextPoint.x+50, nextPoint.y+50);
+
         Graphics2D g2d = (Graphics2D) g.create();
         
         if (false)
@@ -75,31 +75,40 @@ public void drawLineHelper(Point prev, Point next){
 		@Override
 	    public void mousePressed(MouseEvent e)
 	    {
-			if(twoPoints == false)
-	        {
-	      	   nextPoint = e.getPoint();
-	       	   twoPoints = true;
-            }
-            else
-            {
-	       	   prevPoint = nextPoint;
-	       	   nextPoint = e.getPoint();
-	       	   drawLineHelper(prevPoint, nextPoint);
-	       	   lineDrawn = true;
-	       	   //ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
-	       	   if(lineDrawn == true)
-	       	   {
-	       		   prevPoint = null;
-	       		   nextPoint = null;
-        	   }
-	       	   twoPoints = false;
-	       	}
+			Object obj = e.getSource();
+
+			if(obj.getClass().getSimpleName().equals("DraggableIcon"))
+			{
+				
+				DraggableIcon thisIcon = (DraggableIcon)obj;
+				System.out.print(thisIcon.dragPoint());
+				if(twoPoints == false)
+		        {
+		      	   nextPoint = thisIcon.dragPoint();
+		       	   twoPoints = true;
+	            }
+	            else
+	            {
+		       	   prevPoint = nextPoint;
+		       	   nextPoint = thisIcon.dragPoint();
+		       	   drawLineHelper(prevPoint, nextPoint);
+		       	   lineDrawn = true;
+		       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
+		       	   if(lineDrawn == true)
+		       	   {
+		       		   prevPoint = null;
+		       		   nextPoint = null;
+	        	   }
+		       	   twoPoints = false;
+		       	}
+			}
+
 	     }
 		
     }
 	
 	public void updatePanel() {
-		//this.removeAll();
+		this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
 			this.add(currico);
 			
@@ -109,7 +118,7 @@ public void drawLineHelper(Point prev, Point next){
 	}
 	public void drawPanelLines() {
 		for(DrawArrow arr:ArrowRecord) {
-			arr.setBounds(0,0, 870, 485);
+			arr.setBounds(0,0, 700,650);
 			this.add(arr);
 		}
 	}
@@ -143,6 +152,7 @@ public void drawLineHelper(Point prev, Point next){
 		String imgpth;
 		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
 		try {
+			
 			Transferable recvData = dtde.getTransferable();
 			if(recvData.isDataFlavorSupported(DataFlavor.stringFlavor)) {
 				dtde.acceptDrop(DnDConstants.ACTION_MOVE);
@@ -151,9 +161,8 @@ public void drawLineHelper(Point prev, Point next){
 				
 //				ADD PROPERTIES
 				DraggableIcon temp = new DraggableIcon(imgpth, false);
-				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-				
-				
+				temp.setBounds(mousePos.x - 50, mousePos.y - 50, 100, 100);
+				temp.addMouseListener(mouseHandler);
 //				ADD to Handler.
 				IconRecord.add(temp);
 				
