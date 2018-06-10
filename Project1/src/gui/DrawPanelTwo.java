@@ -65,15 +65,20 @@ public void drawLineHelper(Point prev, Point next){
 		@Override
 	    public void mousePressed(MouseEvent e)
 	    {
+			Object obj = e.getSource();
+			if(obj instanceof DraggableIcon) 
+			{
+			DraggableIcon thisIcon = (DraggableIcon)obj;
+			System.out.print(thisIcon.dragPoint());
 			if(twoPoints == false)
 	        {
-	      	   nextPoint = e.getPoint();
+	      	   nextPoint = thisIcon.dragPoint();
 	       	   twoPoints = true;
             }
             else
             {
 	       	   prevPoint = nextPoint;
-	       	   nextPoint = e.getPoint();
+	       	   nextPoint = thisIcon.dragPoint();
 	       	   drawLineHelper(prevPoint, nextPoint);
 	       	   lineDrawn = true;
 	       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
@@ -84,6 +89,7 @@ public void drawLineHelper(Point prev, Point next){
         	   }
 	       	   twoPoints = false;
 	       	}
+			}
 	     }
 		
     }
@@ -142,8 +148,7 @@ public void drawLineHelper(Point prev, Point next){
 //				ADD PROPERTIES
 				DraggableIcon temp = new DraggableIcon(imgpth, false);
 				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-				
-				
+				temp.addMouseListener(mouseHandler);
 //				ADD to Handler.
 				IconRecord.add(temp);
 				
