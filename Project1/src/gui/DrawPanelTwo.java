@@ -2,11 +2,15 @@
 
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -21,6 +25,7 @@ import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
 
 public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private Point mousePos;
@@ -53,9 +58,76 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 public void drawLineHelper(Point prev, Point next){
         
         Graphics g = getGraphics();
-        g.setColor(lineReference.arrowPanel.c);
-          
-        g.drawLine(prevPoint.x+50, prevPoint.y+50, nextPoint.x+50, nextPoint.y+50);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.setColor(lineReference.arrowPanel.c);
+        
+        // initialize arrow head to use on the end of lines
+        Polygon arrowHead = new Polygon();  
+        arrowHead.addPoint( 0,5);
+        arrowHead.addPoint( -5, -5);
+        arrowHead.addPoint( 5,-5);
+        AffineTransform tx = new AffineTransform();
+        
+        // dashed line
+        if(lineReference.arrowPanel.dashedLine1 || lineReference.arrowPanel.dashedLine2)
+        {
+        	Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+            g2d.setStroke(dashed);
+        }
+        
+        // bold dashed line
+        if(lineReference.arrowPanel.dashedLine1Bold || lineReference.arrowPanel.dashedLine2Bold)
+        {
+        	Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+            g2d.setStroke(dashed);
+        }
+        
+        // bold solid line
+        if(lineReference.arrowPanel.solidArrowBold || lineReference.arrowPanel.solidArrow2Bold)
+        {
+        	g2d.setStroke(new BasicStroke(3));
+        }
+        
+        // draw the line
+        g2d.drawLine(prevPoint.x+50, prevPoint.y+50, nextPoint.x+50, nextPoint.y+50);
+        
+        // reset stroke for arrow heads
+        if(lineReference.arrowPanel.solidArrowBold || lineReference.arrowPanel.solidArrow2Bold || lineReference.arrowPanel.dashedLine1Bold || lineReference.arrowPanel.dashedLine2Bold)
+        {
+        	g2d.setStroke(new BasicStroke(3));
+        }
+        else
+        {
+        	g2d.setStroke(new BasicStroke(1));
+        }
+        
+        // draw the first arrow head
+        if(lineReference.arrowPanel.dashedLine1 || lineReference.arrowPanel.dashedLine1Bold || lineReference.arrowPanel.solidArrow || lineReference.arrowPanel.solidArrowBold)
+        {
+        	tx.setToIdentity();
+        	double angle = Math.atan2(nextPoint.y+50-prevPoint.y+50, nextPoint.x+50-prevPoint.x+50);
+            tx.translate(nextPoint.x+50, nextPoint.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);   
+            g2d.drawPolygon(arrowHead);
+        }
+        
+        // draw the second arrow head
+        if(lineReference.arrowPanel.dashedLine2 || lineReference.arrowPanel.dashedLine2Bold || lineReference.arrowPanel.solidArrow2 || lineReference.arrowPanel.solidArrow2Bold)
+        {
+        	tx.setToIdentity();
+        	double angle = Math.atan2(nextPoint.y+50-prevPoint.y+50, nextPoint.x+50-prevPoint.x+50);
+            tx.translate(nextPoint.x+50, nextPoint.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);   
+            g2d.drawPolygon(arrowHead);
+        	tx.setToIdentity();
+        	angle = Math.atan2(nextPoint.y+50-prevPoint.y+50, nextPoint.x+50-prevPoint.x+50);
+            tx.translate(prevPoint.x+50, prevPoint.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);  
+            g2d.drawPolygon(arrowHead);
+        }
 
 	}
 	
@@ -101,8 +173,7 @@ public void drawLineHelper(Point prev, Point next){
 	public void updatePanel() {
 		//this.removeAll();
 		for(DraggableIcon currico:IconRecord) {
-			this.add(currico);
-			
+			this.add(currico);	
 		}
 		drawPanelLines();
 		this.repaint();
