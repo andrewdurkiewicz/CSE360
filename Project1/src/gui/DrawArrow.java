@@ -2,6 +2,7 @@
 package gui;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
@@ -10,15 +11,17 @@ import javax.swing.JLabel;
 public class DrawArrow extends JLabel{
 	public Point pointA;
 	public Point pointB;
+	private Color c;
 	
-	public DrawArrow(Point p1, Point p2) {
+	public DrawArrow(Point p1, Point p2, ButtonPanel line) {
 		setPos(p1,p2);
 		System.out.println("Create Arrow at" + p1 + " and " + p2);
 		setOpaque(true);
-		
+		c = line.arrowPanel.c;
 	}
 	
 	public void paintComponent(Graphics g) {
+		g.setColor(c);
 		g.drawLine(pointA.x+50, pointA.y+50, pointB.x+50,pointB.y+50);
 	}
 	

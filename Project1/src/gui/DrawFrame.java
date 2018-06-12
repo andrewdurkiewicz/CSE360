@@ -59,10 +59,16 @@ public class DrawFrame extends JFrame {
 		contentPane.setBackground(Color.GRAY);
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
-
+		JPanel bp = new JPanel();
+		bp.setLayout(new GridLayout(1, 1));
+		bp.setPreferredSize(new Dimension(300, 800));
+		ButtonPanel ourButtons = new ButtonPanel();
+		ourButtons.setPreferredSize(new Dimension(300,800));
+		bp.add(ourButtons);
 		
 		DrawPanelOne dpOne = new DrawPanelOne(); //panel1
 		DrawPanelTwo dpTwo = new DrawPanelTwo(); //panel2
+		dpTwo.lineReference = ourButtons;
 		contentPane.setPreferredSize(new Dimension(700, 800));
 		dpOne.setPreferredSize(new Dimension(700,150));
 		dpTwo.setPreferredSize(new Dimension(700,650));
@@ -73,13 +79,6 @@ public class DrawFrame extends JFrame {
 		contentPane.add(dpTwo);	
 		mainWindow.add(contentPane, BorderLayout.CENTER);
 		
-		
-		JPanel bp = new JPanel();
-		bp.setLayout(new GridLayout(1, 1));
-		bp.setPreferredSize(new Dimension(300, 800));
-		ButtonPanel ourButtons = new ButtonPanel();
-		ourButtons.setPreferredSize(new Dimension(300,800));
-		bp.add(ourButtons);
 		mainWindow.add(bp,BorderLayout.CENTER);
 		pack();
 	}

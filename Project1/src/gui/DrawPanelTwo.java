@@ -31,6 +31,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private Point nextPoint = new Point();
 	private boolean drawing;
 	private MouseHandler mouseHandler = new MouseHandler();
+	public ButtonPanel lineReference;
 
 	
 	
@@ -52,7 +53,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 public void drawLineHelper(Point prev, Point next){
         
         Graphics g = getGraphics();
-        g.setColor(Color.black);
+        g.setColor(lineReference.arrowPanel.c);
           
         g.drawLine(prevPoint.x+50, prevPoint.y+50, nextPoint.x+50, nextPoint.y+50);
 
@@ -84,7 +85,7 @@ public void drawLineHelper(Point prev, Point next){
 		       	   nextPoint = thisIcon.dragPoint();
 		       	   drawLineHelper(prevPoint, nextPoint);
 		       	   lineDrawn = true;
-		       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint));
+		       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint, lineReference));
 		       	   if(lineDrawn == true)
 		       	   {
 		       		   prevPoint = null;

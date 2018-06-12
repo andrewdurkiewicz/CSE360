@@ -12,14 +12,18 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 
 public class ButtonPanel extends JPanel {
+	public createArrowPanel arrowPanel;
+	
 	public ButtonPanel()
 	{
+		arrowPanel = new createArrowPanel();
+		
 		setBackground(Color.blue);
 		this.setLayout(new GridLayout(2, 1));
-		this.add(new createArrowPanel(), BorderLayout.CENTER);
+		this.add(arrowPanel, BorderLayout.CENTER);
 		this.add(new createTextPanel(), BorderLayout.CENTER);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-	
+		
 	}
 
 }
