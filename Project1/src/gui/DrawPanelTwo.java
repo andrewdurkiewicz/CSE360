@@ -172,10 +172,10 @@ public void drawLineHelper(Point prev, Point next){
      */
 	public void updatePanel() {
 		this.removeAll();
+		drawPanelLines();
 		for(DraggableIcon currico:DataHandler.getIconRecord()) {
 			this.add(currico);	
 		}
-		drawPanelLines();
 		this.repaint();
 	}
 	/**
