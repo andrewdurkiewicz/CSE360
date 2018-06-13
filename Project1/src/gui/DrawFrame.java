@@ -20,10 +20,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowListener;
 import java.awt.event.MouseAdapter;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * 
- * @author Cody
  * GUI class.
  * This is the top level class of the gui. 
  * <br>
@@ -47,13 +53,13 @@ public class DrawFrame extends JFrame {
 	 * Creates GUI objects and populates the gui with UI Components
 	 */
 	private void initialize() {
-		
+		//potato
 		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
 		mainWindow.setSize(new Dimension(1050, 850)); //Needs to be a bit over the sum of all componen
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setTitle("JavaDraw GUI");
-		mainWindow.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+		mainWindow.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 		contentPane = new JPanel();
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER,0,0)); 
 		contentPane.setBackground(Color.GRAY);
@@ -77,9 +83,57 @@ public class DrawFrame extends JFrame {
 		dpTwo.setBorder(BorderFactory.createLineBorder(Color.black));
 		contentPane.add(dpOne);
 		contentPane.add(dpTwo);	
-		mainWindow.add(contentPane, BorderLayout.CENTER);
+		mainWindow.getContentPane().add(contentPane, BorderLayout.CENTER);
 		
-		mainWindow.add(bp,BorderLayout.CENTER);
+		mainWindow.getContentPane().add(bp,BorderLayout.CENTER);
+		
+		JMenuBar menuBar = new JMenuBar();
+		mainWindow.setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmSave = new JMenuItem("Save");
+		mntmSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DataHandler.save(mainWindow);
+			}
+		});
+		mnFile.add(mntmSave);
+		
+		JMenuItem mntmLoad = new JMenuItem("Load");
+		mntmLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DataHandler.load(mainWindow);
+				//After records are set, draw everything
+				dpTwo.updatePanel();
+				//Add listeners back to objects
+				dpTwo.addLoadedListeners();
+			}
+		});
+		mnFile.add(mntmLoad);
+		
+		JMenuItem mntmAbout = new JMenuItem("About");
+		mntmAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(mainWindow, "J-UML\nProject 2\n"
+						+ "************Authors************\n"
+						+ "Zach Carnago\nCody Roberson\nTyler Cole\nAndrew Durkiewicz", "About", JOptionPane.PLAIN_MESSAGE);
+			}
+		});
+		mnFile.add(mntmAbout);
+		
+		JMenuItem mntmQuit = new JMenuItem("Quit");
+		mntmQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int res = JOptionPane.showConfirmDialog(null, "If you have unsaved changes, they will be lost.\n"
+						+ "Close?", "Warning", JOptionPane.YES_NO_OPTION);
+				if(res==0) {
+					System.exit(0);
+				}
+			}
+		});
+		mnFile.add(mntmQuit);
 		pack();
 	}
 }
