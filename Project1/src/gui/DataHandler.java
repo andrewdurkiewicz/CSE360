@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 public class DataHandler {
@@ -43,7 +44,6 @@ public class DataHandler {
 				if(!fp.endsWith(".ud")) {
 					selFile = new File(fp.concat(".ud"));
 				}
-				
 				//Create streams and add icons to stream
 				FileOutputStream fiStream = new FileOutputStream(selFile);
 				ObjectOutputStream ooStream = new ObjectOutputStream(fiStream);
@@ -62,9 +62,20 @@ public class DataHandler {
 	 * @param parent Parent Frame for reference to set dialog location (can be null)
 	 */
 	public static void load(JFrame parent) {
-		JFileChooser sDia = new JFileChooser();
-		sDia.setFileFilter(new drawingFileFilter());
-		int diaRet = sDia.showOpenDialog(parent);
+		//confirm with the user that this will override any work they may have done
+		int res = JOptionPane.showConfirmDialog(null, "This will overwrite any progress!\nLoad File?", "Warning", JOptionPane.YES_NO_OPTION);
+		if(res==0) {
+			try {
+				//Create file input stream and set data
+				
+				
+			} catch(Exception e) {
+				
+			}
+		} else {
+			//do nothing, user had to have selected no
+		}
+		
 	}
 	
 
