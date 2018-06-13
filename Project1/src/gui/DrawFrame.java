@@ -105,6 +105,8 @@ public class DrawFrame extends JFrame {
 				DataHandler.load(mainWindow);
 				//After records are set, draw everything
 				dpTwo.updatePanel();
+				//Add listeners back to objects
+				dpTwo.addLoadedListeners();
 			}
 		});
 		mnFile.add(mntmLoad);

@@ -37,7 +37,6 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private boolean drawing;
 	private MouseHandler mouseHandler = new MouseHandler();
 	public ButtonPanel lineReference;
-
 	
 	/**
 	 * Create the panel.
@@ -178,6 +177,16 @@ public void drawLineHelper(Point prev, Point next){
 		}
 		drawPanelLines();
 		this.repaint();
+	}
+	/**
+	 * Call this to add a listener to all Icons in the IconRecord
+	 * (SHOULD NEVER BE CALLED EXCEPT FOR AFTER LOADING A SAVE FILE)
+	 */
+	public void addLoadedListeners() {
+		for(DraggableIcon currico:DataHandler.getIconRecord()) {
+			currico.addMouseListener(mouseHandler);
+		}
+		
 	}
 	
 	/**
