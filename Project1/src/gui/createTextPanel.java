@@ -147,7 +147,7 @@ public class createTextPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Color c = JColorChooser.showDialog(null, "Choose Color", Color.black);
-				
+				textInput.setForeground(c);
 			}
 		});
 		editFont.add(en_italic);
