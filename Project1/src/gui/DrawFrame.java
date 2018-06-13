@@ -103,6 +103,8 @@ public class DrawFrame extends JFrame {
 		mntmLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DataHandler.load(mainWindow);
+				//After records are set, draw everything
+				dpTwo.updatePanel();
 			}
 		});
 		mnFile.add(mntmLoad);

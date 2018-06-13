@@ -5,9 +5,11 @@ package gui;
  * @author Cody
  */
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -47,8 +49,11 @@ public class DataHandler {
 				//Create streams and add icons to stream
 				FileOutputStream fiStream = new FileOutputStream(selFile);
 				ObjectOutputStream ooStream = new ObjectOutputStream(fiStream);
-				ooStream.writeObject(IconRecord);
-				ooStream.writeObject(ArrowRecord);
+				//Create Root arraylist for export
+				ArrayList<ArrayList> export = new ArrayList<ArrayList>();
+				export.add(IconRecord);
+				export.add(ArrowRecord);
+				ooStream.writeObject(export);
 				ooStream.close();
 			} catch (Exception e) {
 				System.out.println("***[ERROR][DataHandler.save@FileIO when save file is true]***");
@@ -64,16 +69,31 @@ public class DataHandler {
 	public static void load(JFrame parent) {
 		//confirm with the user that this will override any work they may have done
 		int res = JOptionPane.showConfirmDialog(null, "This will overwrite any progress!\nLoad File?", "Warning", JOptionPane.YES_NO_OPTION);
+		
 		if(res==0) {
+			//Generate Save Dialog
+			JFileChooser sDia = new JFileChooser();
+			sDia.setFileFilter(new drawingFileFilter());
+			int diaRet = sDia.showOpenDialog(parent);
+			
 			try {
-				//Create file input stream and set data
+				//Create file input stream and set data if user selected their file
+				if(diaRet==JFileChooser.APPROVE_OPTION) {
+					File selFile = sDia.getSelectedFile();
+					FileInputStream inStream = new FileInputStream(selFile);
+					ObjectInputStream oiStream = new ObjectInputStream(inStream);
+					//load root arraylist and assign children to user data objects
+					ArrayList<ArrayList> temp = (ArrayList<ArrayList>) oiStream.readObject();
+					IconRecord = temp.get(0);
+					ArrowRecord = temp.get(1);
+					}
 				
 				
 			} catch(Exception e) {
 				
 			}
 		} else {
-			//do nothing, user had to have selected no
+			//do nothing, user had to have selected no on confirm dialog
 		}
 		
 	}
