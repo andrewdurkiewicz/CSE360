@@ -23,7 +23,7 @@ public class createTextPanel extends JPanel{
 	int[] s_values = {8, 12, 18, 20, 22, 48};
 	String[] s_names = {"8", "10", "12", "14", "16"};
 	Border border = BorderFactory.createLineBorder(Color.BLACK);
-
+	
 	public createTextPanel(){
 		this.setLayout(new GridLayout(2,1));
 		
@@ -82,9 +82,22 @@ public class createTextPanel extends JPanel{
 		editFont.setLayout(new FlowLayout());
 		
 		
-		
-		JButton editColor = new JButton("Edit Color");
+		JButton editBorderColor = new JButton("Edit Border Color");
+		JButton editColor = new JButton("Edit Font Color");
 		JButton clear = new JButton("Clear Text");
+		
+		editBorderColor.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Color c = JColorChooser.showDialog(null, "Choose Color", Color.black);
+				Border border = BorderFactory.createLineBorder(c);
+				textInput.setBorder(BorderFactory.createCompoundBorder(border,
+						BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+			}
+		});
 		clear.addActionListener(new ActionListener() {
 			
 			@Override
@@ -134,13 +147,13 @@ public class createTextPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Color c = JColorChooser.showDialog(null, "Choose Color", Color.black);
-				System.out.println(c);
-				textInput.setForeground(c);
+				
 			}
 		});
 		editFont.add(en_italic);
 		editFont.add(en_bold);
 		editFont.add(editColor);
+		editFont.add(editBorderColor);
 		editFont.add(clear);
 
 		JComboBox<String> fontfamily = new JComboBox<>(families);
@@ -171,6 +184,10 @@ public class createTextPanel extends JPanel{
 			}
 		});
 		
+		
+		editFont.setIgnoreRepaint(true);
+		textPanel.setIgnoreRepaint(true);
+		this.setIgnoreRepaint(true);
 		
 		textPanel.add(textInput,BorderLayout.CENTER);
 		editFont.add(fontfamily);
