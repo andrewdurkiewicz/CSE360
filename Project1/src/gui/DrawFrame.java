@@ -23,7 +23,6 @@ import java.awt.event.MouseAdapter;
 
 /**
  * 
- * @author Cody
  * GUI class.
  * This is the top level class of the gui. 
  * <br>

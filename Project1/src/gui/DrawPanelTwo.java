@@ -39,9 +39,6 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	public ButtonPanel lineReference;
 
 	
-	
-	private ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>();
-	private ArrayList<DrawArrow> ArrowRecord = new ArrayList<DrawArrow>();
 	/**
 	 * Create the panel.
 	 */
@@ -157,7 +154,7 @@ public void drawLineHelper(Point prev, Point next){
 		       	   nextPoint = thisIcon.dragPoint();
 		       	   drawLineHelper(prevPoint, nextPoint);
 		       	   lineDrawn = true;
-		       	   ArrowRecord.add(new DrawArrow(prevPoint, nextPoint, lineReference));
+		       	   DataHandler.addArrow(new DrawArrow(prevPoint, nextPoint, lineReference));
 		       	   if(lineDrawn == true)
 		       	   {
 		       		   prevPoint = null;
@@ -170,16 +167,25 @@ public void drawLineHelper(Point prev, Point next){
 		
     }
 	
+    /**
+     * Removes and re-adds all DraggableIcons to panel
+     * Calls: DrawPanelLines
+     */
 	public void updatePanel() {
-		//this.removeAll();
-		for(DraggableIcon currico:IconRecord) {
+		this.removeAll();
+		for(DraggableIcon currico:DataHandler.getIconRecord()) {
 			this.add(currico);	
 		}
 		drawPanelLines();
 		this.repaint();
 	}
+	
+	/**
+	 * Re-Adds all lines to pane after forced pane redraw, 
+	 */
+	//TODO: [BUG][SEVERE](cody) Lines are initially drawn to DrawPanelTwo as graphics, after panel update, are readded as objects
 	public void drawPanelLines() {
-		for(DrawArrow arr:ArrowRecord) {
+		for(DrawArrow arr:DataHandler.getArrowRecord()) {
 			arr.setBounds(0,0, 870, 485);
 			this.add(arr);
 		}
@@ -188,7 +194,6 @@ public void drawLineHelper(Point prev, Point next){
 	@Override
 	public void dragEnter(DropTargetDragEvent dtde) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -226,7 +231,7 @@ public void drawLineHelper(Point prev, Point next){
 				temp.addMouseListener(mouseHandler);
 
 //				ADD to Handler.
-				IconRecord.add(temp);
+				DataHandler.addIcon(temp);
 				
 				updatePanel();
 				
