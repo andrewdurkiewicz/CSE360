@@ -23,6 +23,8 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -111,7 +113,26 @@ public class DrawFrame extends JFrame {
 		});
 		mnFile.add(mntmLoad);
 		
+		JMenuItem mntmAbout = new JMenuItem("About");
+		mntmAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(mainWindow, "J-UML\nProject 2\n"
+						+ "************Authors************\n"
+						+ "Zach Carnago\nCody Roberson\nTyler Cole\nAndrew Durkiewicz", "About", JOptionPane.PLAIN_MESSAGE);
+			}
+		});
+		mnFile.add(mntmAbout);
+		
 		JMenuItem mntmQuit = new JMenuItem("Quit");
+		mntmQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int res = JOptionPane.showConfirmDialog(null, "If you have unsaved changes, they will be lost.\n"
+						+ "Close?", "Warning", JOptionPane.YES_NO_OPTION);
+				if(res==0) {
+					System.exit(0);
+				}
+			}
+		});
 		mnFile.add(mntmQuit);
 		pack();
 	}
