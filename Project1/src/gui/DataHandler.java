@@ -5,6 +5,10 @@ package gui;
  * @author Cody
  */
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
@@ -25,9 +29,33 @@ public class DataHandler {
 	 * @param parent Parent Frame for reference to set dialog location (can be null)
 	 */
 	public static void save(JFrame parent) {
+		//Generate Save Dialog
 		JFileChooser sDia = new JFileChooser();
 		sDia.setFileFilter(new drawingFileFilter());
 		int diaRet = sDia.showSaveDialog(parent);
+		
+		//Process results if file chosen
+		if(diaRet==JFileChooser.APPROVE_OPTION) {
+			File selFile = sDia.getSelectedFile();
+			try {
+				//Append Extension if not present
+				String fp = selFile.getPath();
+				if(!fp.endsWith(".ud")) {
+					selFile = new File(fp.concat(".ud"));
+				}
+				
+				//Create streams and add icons to stream
+				FileOutputStream fiStream = new FileOutputStream(selFile);
+				ObjectOutputStream ooStream = new ObjectOutputStream(fiStream);
+				ooStream.writeObject(IconRecord);
+				ooStream.writeObject(ArrowRecord);
+				ooStream.close();
+			} catch (Exception e) {
+				System.out.println("***[ERROR][DataHandler.save@FileIO when save file is true]***");
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	/**
 	 * Opens a load dialog where the user can select a file to open
@@ -83,7 +111,7 @@ public class DataHandler {
  */
 class drawingFileFilter extends FileFilter{
 //	Set the desired file extension here
-	private final String FileExtension = "ud";
+	protected final String FileExtension = "ud";
 
 
 	
