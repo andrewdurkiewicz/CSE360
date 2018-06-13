@@ -6,9 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
-
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;

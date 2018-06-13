@@ -22,7 +22,6 @@ public class DrawArrow extends JLabel{
 	
 	public DrawArrow(Point p1, Point p2, ButtonPanel line) {
 		setPos(p1,p2);
-		System.out.println("Create Arrow at" + p1 + " and " + p2);
 		setOpaque(true);
 		
 		// declaring the variables at the times they are when instantiated (don't change afterwards)

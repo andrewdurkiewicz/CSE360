@@ -90,7 +90,8 @@ public class DataHandler {
 				
 				
 			} catch(Exception e) {
-				
+				System.out.println("***[ERROR][DataHandler.load@FileIO when load file is true]***");
+				e.printStackTrace();
 			}
 		} else {
 			//do nothing, user had to have selected no on confirm dialog
