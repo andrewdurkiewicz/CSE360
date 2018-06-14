@@ -86,6 +86,7 @@ public class DataHandler {
 					ArrayList<ArrayList> temp = (ArrayList<ArrayList>) oiStream.readObject();
 					IconRecord = temp.get(0);
 					ArrowRecord = temp.get(1);
+					oiStream.close();
 					}
 				
 				
@@ -138,7 +139,7 @@ public class DataHandler {
  * Used by the open/save dialog to filter it's results.
  * This is to help with readability and present the user
  * with only relevant files.
- * @author haliax
+ * @author cody
  *
  */
 class drawingFileFilter extends FileFilter{
