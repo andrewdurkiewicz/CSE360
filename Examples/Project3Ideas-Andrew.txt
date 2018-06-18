@@ -1,0 +1,7 @@
+this is how I expect to complete project 3. I am writing this down so I dont forget.
+1) use getComponents for textbox to get the components of panel2. 
+2) iterate over those components. (String) Getcomponent.getClass() should return object type.
+3) If  a line exist, we know there is a relationship, we only need to find out what type of relationship it is. From
+	that we can say in psuedo code, "if these are connected then find the connected type. If arrow then textbox.setText(TEXT GOES HERE"
+
+	4) EZ
