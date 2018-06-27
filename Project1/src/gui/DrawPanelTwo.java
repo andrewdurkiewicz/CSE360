@@ -62,6 +62,14 @@ public void drawLineHelper(Point prev, Point next){
         arrowHead.addPoint( 0,5);
         arrowHead.addPoint( -5, -5);
         arrowHead.addPoint( 5,-5);
+        
+        // create diamond head polygon to be used for aggregation
+        Polygon diamondHead = new Polygon();
+        diamondHead.addPoint( 0,5);
+        diamondHead.addPoint( -5, -5);
+        diamondHead.addPoint( 0,-10);
+        diamondHead.addPoint( 5,-5);
+        
         AffineTransform tx = new AffineTransform();
         
         // dashed line
@@ -98,7 +106,7 @@ public void drawLineHelper(Point prev, Point next){
         }
         
         // draw the first arrow head
-        if(lineReference.arrowPanel.dashedLine1 || lineReference.arrowPanel.dashedLine1Bold || lineReference.arrowPanel.solidArrow || lineReference.arrowPanel.solidArrowBold)
+        if(lineReference.arrowPanel.dashedLine1 || lineReference.arrowPanel.dashedLine1Bold || lineReference.arrowPanel.solidArrow || lineReference.arrowPanel.solidArrowBold || lineReference.arrowPanel.inherit)
         {
         	tx.setToIdentity();
         	double angle = Math.atan2(nextPoint.y+50-prevPoint.y+50, nextPoint.x+50-prevPoint.x+50);
@@ -108,7 +116,30 @@ public void drawLineHelper(Point prev, Point next){
             g2d.drawPolygon(arrowHead);
         }
         
-        // draw the second arrow head
+        // draw aggregate diamond head
+        if(lineReference.arrowPanel.aggregate)
+        {
+        	tx.setToIdentity();
+        	double angle = Math.atan2(nextPoint.y+50-prevPoint.y+50, nextPoint.x+50-prevPoint.x+50);
+            tx.translate(nextPoint.x+50, nextPoint.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);
+            g2d.drawPolygon(diamondHead);
+        }
+        
+        // draw associate arrow head (two lines)
+        if(lineReference.arrowPanel.associate)
+        {
+        	tx.setToIdentity();
+        	double angle = Math.atan2(nextPoint.y+50-prevPoint.y+50, nextPoint.x+50-prevPoint.x+50);
+            tx.translate(nextPoint.x+50, nextPoint.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);
+            g2d.drawLine(0, 5, 5, -5);
+            g2d.drawLine(0, 5, -5, -5);
+        }
+        
+        // draw the two arrow heads
         if(lineReference.arrowPanel.dashedLine2 || lineReference.arrowPanel.dashedLine2Bold || lineReference.arrowPanel.solidArrow2 || lineReference.arrowPanel.solidArrow2Bold)
         {
         	tx.setToIdentity();

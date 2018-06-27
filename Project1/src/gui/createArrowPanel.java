@@ -13,7 +13,8 @@ import java.awt.event.ItemListener;
 public class createArrowPanel extends JPanel {
 	public Color c;
 	public boolean plainLine, dashedLine1, dashedLine1Bold, dashedLine2, 
-				   dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold;
+				   dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold,
+				   inherit, aggregate, associate;
 	
 	public createArrowPanel() {
 		
@@ -103,6 +104,21 @@ public class createArrowPanel extends JPanel {
                     {
                     	solidArrow2Bold = true;
                     }
+                    
+                    else if(command.equals("inherit"))
+                    {
+                    	inherit = true;
+                    }
+                    
+                    else if(command.equals("aggregate"))
+                    {
+                    	aggregate = true;
+                    }
+                    
+                    else if(command.equals("associate"))
+                    {
+                    	associate = true;
+                    }
                 } 
                 
                 else 
@@ -154,6 +170,20 @@ public class createArrowPanel extends JPanel {
                     	solidArrow2Bold = false;
                     }
                 	
+                    else if(command.equals("inherit"))
+                    {
+                    	inherit = false;
+                    }
+                	
+                    else if(command.equals("aggregate"))
+                    {
+                    	aggregate = false;
+                    }
+                	
+                    else if(command.equals("associate"))
+                    {
+                    	associate = false;
+                    }
                 }
             }
         }
@@ -162,6 +192,18 @@ public class createArrowPanel extends JPanel {
 		RadioListener radioListener = new RadioListener();
 		
 		// Buttons
+		JRadioButton inheritanceButton = new JRadioButton("Inheritance");
+		inheritanceButton.addItemListener(radioListener);
+		inheritanceButton.setActionCommand("inherit");
+		
+		JRadioButton aggregateButton = new JRadioButton("Aggregation");
+		aggregateButton.addItemListener(radioListener);
+		aggregateButton.setActionCommand("aggregate");
+		
+		JRadioButton associateButton = new JRadioButton("Association");
+		associateButton.addItemListener(radioListener);
+		associateButton.setActionCommand("associate");
+		
 		JRadioButton plainLineButton = new JRadioButton("Plain Line");
 		plainLineButton.addItemListener(radioListener);
 		plainLineButton.setSelected(true);
@@ -201,6 +243,9 @@ public class createArrowPanel extends JPanel {
 		
 		// adding buttons to button group
 		ButtonGroup radioButtonsGroup = new ButtonGroup();
+		radioButtonsGroup.add(inheritanceButton);
+		radioButtonsGroup.add(aggregateButton);
+		radioButtonsGroup.add(associateButton);
 		radioButtonsGroup.add(plainLineButton);
 		radioButtonsGroup.add(dashedLine1Button);
 		radioButtonsGroup.add(dashedLine1BoldButton);
@@ -212,6 +257,10 @@ public class createArrowPanel extends JPanel {
 		radioButtonsGroup.add(solidArrow2BoldButton);
 		
 		// adding buttons to panel
+		radioButtons.add(inheritanceButton);
+		radioButtons.add(aggregateButton);
+		radioButtons.add(associateButton);
+		radioButtons.add(new JLabel("   ")); //empty space to format
 		radioButtons.add(plainLineButton);
 		radioButtons.add(dashedLine1Button);
 		radioButtons.add(dashedLine1BoldButton);

@@ -18,7 +18,8 @@ public class DrawArrow extends JLabel{
 	public Point pointB;
 	private Color c;
 	private boolean plainLine, dashedLine1, dashedLine1Bold, dashedLine2, 
-	   				dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold;
+	   				dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold,
+	   				inherit, aggregate, associate;
 	
 	public DrawArrow(Point p1, Point p2, ButtonPanel line) {
 		setPos(p1,p2);
@@ -35,6 +36,9 @@ public class DrawArrow extends JLabel{
 		solidArrowBold = line.arrowPanel.solidArrowBold;
 		solidArrow2 = line.arrowPanel.solidArrow2;
 		solidArrow2Bold = line.arrowPanel.solidArrow2Bold;
+		inherit = line.arrowPanel.inherit;
+		aggregate = line.arrowPanel.aggregate;
+		associate = line.arrowPanel.associate;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -46,6 +50,14 @@ public class DrawArrow extends JLabel{
         arrowHead.addPoint( 0,5);
         arrowHead.addPoint( -5, -5);
         arrowHead.addPoint( 5,-5);
+        
+        // create diamond head polygon to be used for aggregation
+        Polygon diamondHead = new Polygon();
+        diamondHead.addPoint( 0,5);
+        diamondHead.addPoint( -5, -5);
+        diamondHead.addPoint( 0,-10);
+        diamondHead.addPoint( 5,-5);
+        
         AffineTransform tx = new AffineTransform();
         
         // dashed line
@@ -82,7 +94,7 @@ public class DrawArrow extends JLabel{
         }
         
         // draw first arrow head
-        if(dashedLine1 || dashedLine1Bold || solidArrow || solidArrowBold)
+        if(dashedLine1 || dashedLine1Bold || solidArrow || solidArrowBold || inherit)
         {
         	tx.setToIdentity();
         	double angle = Math.atan2(pointB.y+50-pointA.y+50, pointB.x+50-pointA.x+50);
@@ -92,7 +104,30 @@ public class DrawArrow extends JLabel{
             g2d.drawPolygon(arrowHead);
         }
         
-        // draw second arrow head
+        // draw diamondhead for aggregation
+        if(aggregate)
+        {
+        	tx.setToIdentity();
+        	double angle = Math.atan2(pointB.y+50-pointA.y+50, pointB.x+50-pointA.x+50);
+            tx.translate(pointB.x+50, pointB.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);   
+            g2d.drawPolygon(diamondHead);
+        }
+        
+        // draw arrowhead for association (two lines
+        if(associate)
+        {
+        	tx.setToIdentity();
+        	double angle = Math.atan2(pointB.y+50-pointA.y+50, pointB.x+50-pointA.x+50);
+            tx.translate(pointB.x+50, pointB.y+50);
+            tx.rotate((angle-Math.PI/2d));
+            g2d.setTransform(tx);   
+            g2d.drawLine(0, 5, 5, -5);
+            g2d.drawLine(0, 5, -5, -5);
+        }
+        
+        // draw two arrow heads
         if(dashedLine2 || dashedLine2Bold || solidArrow2 || solidArrow2Bold)
         {
         	tx.setToIdentity();
