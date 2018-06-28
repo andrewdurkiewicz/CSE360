@@ -53,7 +53,7 @@ public class DrawFrame extends JFrame {
 		//potato
 		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
-		mainWindow.setSize(new Dimension(1050, 850)); //Needs to be a bit over the sum of all componen
+		mainWindow.setSize(new Dimension(1400, 900)); //Needs to be a bit over the sum of all componen
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setTitle("JavaDraw GUI");
 		mainWindow.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
@@ -63,8 +63,8 @@ public class DrawFrame extends JFrame {
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		JPanel bp = new JPanel();
-		bp.setLayout(new GridLayout(1, 1));
-		bp.setPreferredSize(new Dimension(300, 800));
+		bp.setLayout(new GridLayout(1, 2));
+		bp.setPreferredSize(new Dimension(600, 800));
 		ButtonPanel ourButtons = new ButtonPanel();
 		ourButtons.setPreferredSize(new Dimension(300,800));
 		bp.add(ourButtons);
