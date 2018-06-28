@@ -2,28 +2,28 @@
 
 package gui;
 import javax.swing.JPanel;
+import javax.swing.plaf.IconUIResource;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+
 
 
 
 public class DrawPanelOne extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public DrawPanelOne(){
-		setBackground(Color.white);
-		setLayout(new FlowLayout(FlowLayout.LEFT,50,18));
+		this.setBackground(Color.white);
+		setLayout(new FlowLayout(FlowLayout.CENTER,50,18));
+		iconCircle c = new iconCircle();
+		iconRectangle r = new iconRectangle();
 		
-		Circle c = new Circle();
-		Triangle t = new Triangle();
-		Star s = new Star();
-		Rectangle r = new Rectangle();
-		
-		this.add(c);
-		this.add(t);
-		this.add(s);
-		this.add(r);
+		this.add(c);//add circle
+		this.add(r);//add rectangle
 
 		
 	

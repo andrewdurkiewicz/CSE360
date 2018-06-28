@@ -2,42 +2,29 @@
 
 package gui;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.Stroke;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetDragEvent;
-import java.awt.dnd.DropTargetDropEvent;
-import java.awt.dnd.DropTargetEvent;
-import java.awt.dnd.DropTargetListener;
-import java.util.ArrayList;
-
+import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.dnd.*;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.AffineTransform;
+import java.util.Observable;
+import java.util.Observer;
 
-public class DrawPanelTwo extends JPanel implements DropTargetListener{
+public class DrawPanelTwo extends JPanel implements DropTargetListener, Observer{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Point mousePos;
 	public static Point currentPos;
 	public static Point nextPos;
 	public static int state = 0;
 	private Point prevPoint = new Point();
 	private Point nextPoint = new Point();
-	private boolean drawing;
 	private MouseHandler mouseHandler = new MouseHandler();
 	public ButtonPanel lineReference;
-	
 	/**
 	 * Create the panel.
 	 */
@@ -284,6 +271,15 @@ public void drawLineHelper(Point prev, Point next){
 		}
 
 	  }
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+
 	
 
 }

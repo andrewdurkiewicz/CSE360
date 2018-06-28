@@ -22,13 +22,16 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
 /**
 
  * Implements Drag and Drop handling on a JLabel.
  * <p>Is a JLabel component with drag and drop listeners implemented</p> 
  * @author Cody
  */
-public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener{
+public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener, Observable{
 	DragSource dSource;
 	private String imgSource;
 	private Point currentPos;
@@ -91,6 +94,16 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	@Override
 	public void dragDropEnd(DragSourceDropEvent dsde) {
 		// Do Nothing, required due to implemented class
+		
+	}
+	@Override
+	public void addListener(InvalidationListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void removeListener(InvalidationListener listener) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -135,8 +135,9 @@ public class editFontPanel extends JPanel {
 		JPanel collectButtons = new JPanel();
 		collectButtons.setLayout(new FlowLayout());
 		collectButtons.add(fontfamily);
-		collectButtons.add(editFont);
 		collectButtons.add(sizeValues);
+
+		collectButtons.add(editFont);
 		this.add(textInput, BorderLayout.CENTER);
 		this.add(collectButtons,BorderLayout.SOUTH);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));

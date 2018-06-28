@@ -1,15 +1,17 @@
+//Andrew
 package gui;
 
-public class Rectangle extends DraggableIcon{
+public class iconCircle extends DraggableIcon{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Rectangle() {
-		super("resources//rectangle.png", true);
+	public iconCircle() {
+		super("resources//Black_Circle.png", true);
 		// TODO Auto-generated constructor stub
 	}
 
 }
+
