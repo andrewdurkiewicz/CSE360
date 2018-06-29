@@ -1,42 +1,23 @@
 // Author: Zach
 package gui;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.ComponentOrientation;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.WindowListener;
-import java.awt.event.MouseAdapter;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
+import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-/**
- * 
- * GUI class.
- * This is the top level class of the gui. 
- * <br>
- * -Is called by JUML
- */
+
 
 public class DrawFrame extends JFrame {
+	/**
+	 * 
+	 * GUI class.
+	 * This is the top level class of the gui. 
+	 * <br>
+	 * -Is called by JUML
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame mainWindow;
 	private JPanel	contentPane;
-	
 	/**
 	 * Default Constructor.
 	 * Used to create a new instance of the GUI and makes it visible

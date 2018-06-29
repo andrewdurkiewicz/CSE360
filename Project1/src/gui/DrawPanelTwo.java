@@ -12,7 +12,7 @@ import java.awt.geom.AffineTransform;
 import java.util.Observable;
 import java.util.Observer;
 
-public class DrawPanelTwo extends JPanel implements DropTargetListener, Observer{
+public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	/**
 	 * 
 	 */
@@ -29,6 +29,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener, Observer
 	/**
 	 * Create the panel.
 	 */
+	
 	public DrawPanelTwo(){
 		
 		setBackground(Color.WHITE);
@@ -40,7 +41,6 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener, Observer
 	}
 	 
 public void drawLineHelper(Point prev, Point next){
-        
         Graphics g = getGraphics();
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(lineReference.arrowPanel.c);
@@ -195,6 +195,7 @@ public void drawLineHelper(Point prev, Point next){
 		for(DraggableIcon currico:DataHandler.getIconRecord()) {
 			this.add(currico);	
 		}
+		
 		this.repaint();
 	}
 	/**
@@ -245,7 +246,8 @@ public void drawLineHelper(Point prev, Point next){
 	@Override
 	public void drop(DropTargetDropEvent dtde) {
 		String imgpth;
-		String name;
+		DraggableIcon temp;
+
 		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
 		try {
 			Transferable recvData = dtde.getTransferable();
@@ -253,35 +255,23 @@ public void drawLineHelper(Point prev, Point next){
 				dtde.acceptDrop(DnDConstants.ACTION_MOVE);
 				imgpth = (String) recvData.getTransferData(DataFlavor.stringFlavor);
 				dtde.getDropTargetContext().dropComplete(true);
-				System.out.println(imgpth);
-				if((imgpth).contains("Black_Circle"))
-				{
-					name = "circle";
-					DraggableIcon temp1 = new DraggableIcon(imgpth, true, name);
-//					ADD PROPERTIES
-					temp1.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-					temp1.addMouseListener(mouseHandler);
 
-//					ADD to Handler.
-					DataHandler.addIcon(temp1);
-
-				}
-				else if((imgpth).contains("rectangle"))
-				{
-					name = "rectangle";
-					DraggableIcon temp = new DraggableIcon(imgpth, true, name);
+				if((imgpth).contains("Black_Circle")){name = "circle";} //sets the name variable for the Draggable icon 
+				else if((imgpth).contains("rectangle")){name = "rectangle";}//sets the name variable for the Draggable icon 
+					temp = new DraggableIcon(imgpth, false, name);
 //					ADD PROPERTIES
 					temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
 					temp.addMouseListener(mouseHandler);
-
+					
 //					ADD to Handler.
 					DataHandler.addIcon(temp);
 
-				}
+				
 //				ADD PROPERTIES
+
 				
 				updatePanel();
-				
+		
 			} else {
 				dtde.rejectDrop();
 			}
@@ -292,12 +282,8 @@ public void drawLineHelper(Point prev, Point next){
 
 	  }
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
-		
-	}
+
+
 
 
 	
