@@ -73,5 +73,8 @@ public class createTextPanel extends JTextArea{
 		//editFont.setIgnoreRepaint(true);
 	}
 	
+	
+
+	
 
 }

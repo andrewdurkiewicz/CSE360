@@ -16,6 +16,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener, Observer
 	/**
 	 * 
 	 */
+	private String name;
 	private static final long serialVersionUID = 1L;
 	private Point mousePos;
 	public static Point currentPos;
@@ -56,7 +57,6 @@ public void drawLineHelper(Point prev, Point next){
         diamondHead.addPoint( -5, -5);
         diamondHead.addPoint( 0,-10);
         diamondHead.addPoint( 5,-5);
-        
         AffineTransform tx = new AffineTransform();
         
         // dashed line
@@ -159,6 +159,7 @@ public void drawLineHelper(Point prev, Point next){
 			{
 				
 				DraggableIcon thisIcon = (DraggableIcon)obj;
+				System.out.println(thisIcon.getClass());
 				System.out.print(thisIcon.dragPoint());
 				if(twoPoints == false)
 		        {
@@ -244,6 +245,7 @@ public void drawLineHelper(Point prev, Point next){
 	@Override
 	public void drop(DropTargetDropEvent dtde) {
 		String imgpth;
+		String name;
 		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
 		try {
 			Transferable recvData = dtde.getTransferable();
@@ -251,14 +253,32 @@ public void drawLineHelper(Point prev, Point next){
 				dtde.acceptDrop(DnDConstants.ACTION_MOVE);
 				imgpth = (String) recvData.getTransferData(DataFlavor.stringFlavor);
 				dtde.getDropTargetContext().dropComplete(true);
-				
-//				ADD PROPERTIES
-				DraggableIcon temp = new DraggableIcon(imgpth, false);
-				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-				temp.addMouseListener(mouseHandler);
+				System.out.println(imgpth);
+				if((imgpth).contains("Black_Circle"))
+				{
+					name = "circle";
+					DraggableIcon temp1 = new DraggableIcon(imgpth, true, name);
+//					ADD PROPERTIES
+					temp1.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
+					temp1.addMouseListener(mouseHandler);
 
-//				ADD to Handler.
-				DataHandler.addIcon(temp);
+//					ADD to Handler.
+					DataHandler.addIcon(temp1);
+
+				}
+				else if((imgpth).contains("rectangle"))
+				{
+					name = "rectangle";
+					DraggableIcon temp = new DraggableIcon(imgpth, true, name);
+//					ADD PROPERTIES
+					temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
+					temp.addMouseListener(mouseHandler);
+
+//					ADD to Handler.
+					DataHandler.addIcon(temp);
+
+				}
+//				ADD PROPERTIES
 				
 				updatePanel();
 				

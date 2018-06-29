@@ -31,25 +31,41 @@ import javafx.beans.Observable;
  * <p>Is a JLabel component with drag and drop listeners implemented</p> 
  * @author Cody
  */
-public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener, Observable{
+public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener{
 	DragSource dSource;
+	private static String iconType;
 	private String imgSource;
-	private Point currentPos;
 	public Point dragPoint() {
 		return this.getLocation();
 	}
-	public DraggableIcon(String ImageSource, boolean draggable){
+	static int iconCounter = -1; //helps us skip the initialization issues where it prints the 
+	public DraggableIcon(String ImageSource, boolean draggable, String s){
 		imgSource = ImageSource;
-		
+		iconType = s; //allows us to tell which type it is
 		if(draggable) {
 		// Create Drag and Drop listener
 		dSource = new DragSource();
 		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
 		}
-		
+		System.out.println(iconType);
 		// Set image of JLabel
 		try {
 			this.setIcon(new ImageIcon(ImageIO.read(new File(imgSource))));
+			if(iconCounter > 0)
+			{
+				if(iconType == "circle")
+				{
+					System.out.println("hi");
+			        editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + "\nPublic interface icon" + iconCounter + " {\n}");
+				}
+				else if(iconType == "rectangle")
+				{
+			        editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + "\n" + "Public icon" + iconCounter + " {\n}");
+				}
+			}
+	        iconCounter++;
+
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -63,9 +79,14 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		dSource.startDrag(dge, DragSource.DefaultCopyDrop, txfr, this);
 	}
 
-	public void setImgSource(String srcImg) {
+	public void setImgSource(String srcImg, String name) {
 		imgSource = srcImg;
 	}
+	
+	public static void setImgName(String name) {
+		
+	}
+	
 
 	@Override
 	public void dragEnter(DragSourceDragEvent dsde) {
@@ -94,16 +115,6 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	@Override
 	public void dragDropEnd(DragSourceDropEvent dsde) {
 		// Do Nothing, required due to implemented class
-		
-	}
-	@Override
-	public void addListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void removeListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
 		
 	}
 

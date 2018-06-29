@@ -23,7 +23,7 @@ import javax.swing.border.Border;
 import com.sun.javafx.scene.control.skin.ButtonSkin;
 
 public class editFontPanel extends JPanel {
-	JTextArea textInput;
+	static JTextArea textInput;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
 	Font de_font = new Font("Serif", Font.PLAIN, 18);
 	int[] s_values = {8, 12, 18, 20, 22, 48};
@@ -142,8 +142,13 @@ public class editFontPanel extends JPanel {
 		this.add(collectButtons,BorderLayout.SOUTH);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 
+
 		
 		
+	}
+	public static JTextArea getTextArea()
+	{
+		return textInput;
 		
 	}
 }
