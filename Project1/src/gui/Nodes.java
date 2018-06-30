@@ -13,8 +13,7 @@ public class Nodes extends Observable{
 	DraggableIcon start;
 	DraggableIcon end;
 	DrawArrow arrow;
-	Nodes asSinglet1; //startNode
-	Nodes asSinglet2; //endNode
+
 
 	public Nodes() {
 		super();
@@ -34,7 +33,6 @@ public class Nodes extends Observable{
 		this.end = e;
 		this.arrow = a;
 		
-		this.asSinglet2 = new Nodes(e);
 
 
 

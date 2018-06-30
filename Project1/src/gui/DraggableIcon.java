@@ -26,7 +26,6 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	public Point dragPoint() {
 		return this.getLocation();
 	}
-	static int iconCounter = -1; //helps us skip the initialization issues where it prints the 
 	public DraggableIcon(String ImageSource, boolean draggable, String s){
 		imgSource = ImageSource;
 		iconClass = s; //allows us to tell which type it is
