@@ -6,7 +6,6 @@ import java.util.Observable;
 
 
 public class Nodes extends Observable{
-	ArrayList<Nodes> n = new ArrayList<Nodes>();
 	String type;
 	static int nodelist = 0;
 	boolean isSingle;
@@ -38,25 +37,13 @@ public class Nodes extends Observable{
 
 	}
 	public void addSingle(Nodes newNode) {
-		nodelist++;
+		if(newNode.isSingle == true) {nodelist++;}
 		newNode.start.persistantName = "icon" + nodelist;
 		newNode.addObserver(new nodeObserver());
-		n.add(newNode);
 		setChanged();
 		notifyObservers(newNode);
 		
 	}
-	public void addConnect(Nodes addthis) {
-
-		n.add(addthis);
-
-		
-	}
-	public ArrayList<Nodes> getNewArray()
-	{
-		return n;
-	}
-	
 
 	
 }
