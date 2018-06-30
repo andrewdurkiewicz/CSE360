@@ -8,10 +8,13 @@ import java.util.Observable;
 public class Nodes extends Observable{
 	ArrayList<Nodes> n = new ArrayList<Nodes>();
 	String type;
+	
 	boolean isSingle;
 	DraggableIcon start;
 	DraggableIcon end;
 	DrawArrow arrow;
+	Nodes asSinglet1; //startNode
+	Nodes asSinglet2; //endNode
 
 	public Nodes() {
 		super();
@@ -25,10 +28,14 @@ public class Nodes extends Observable{
 	}
 	public Nodes(DraggableIcon st, DraggableIcon e, DrawArrow a) {
 		super();
+		
 		this.isSingle = false;
 		this.start = st;
 		this.end = e;
 		this.arrow = a;
+		this.asSinglet1 = new Nodes(st);
+		this.asSinglet2 = new Nodes(e);
+
 
 
 	}
@@ -50,5 +57,7 @@ public class Nodes extends Observable{
 	{
 		return n;
 	}
+	
+
 	
 }
