@@ -134,6 +134,10 @@ public class DataHandler {
 	public static void addArrow(DrawArrow Arrow) {
 		ArrowRecord.add(Arrow);
 	}
+	
+	public static void removeIcon(DraggableIcon d) {
+		IconRecord.remove(d);
+	}
 }
 
 /**

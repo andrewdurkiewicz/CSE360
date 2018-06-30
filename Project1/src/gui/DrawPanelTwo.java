@@ -150,13 +150,19 @@ public void drawLineHelper(Point prev, Point next){
 
     private class MouseHandler extends MouseAdapter 
 	{
-		 public boolean twoPoints = false;
+		public boolean twoPoints = false;
 		public boolean lineDrawn = false;
 		
 		@Override
 	    public void mousePressed(MouseEvent e)
 	    {
 			Object obj = e.getSource();
+
+			if(e.isAltDown())
+			{
+				DataHandler.removeIcon((DraggableIcon) obj);
+				updatePanel();
+			}
 
 			if(obj.getClass().getSimpleName().equals("DraggableIcon"))
 			{
