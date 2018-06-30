@@ -16,8 +16,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	/**
 	 * 
 	 */
-	public iconObserver observer = new iconObserver(DataHandler.getIconRecord());
-	public iconObservable observable;
+
 	private String name;
 	private static final long serialVersionUID = 1L;
 	private Point mousePos;
@@ -33,7 +32,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	 */
 	
 	public DrawPanelTwo(){
-		
+
 		setBackground(Color.WHITE);
 		this.setLayout(null);
 		new DropTarget(this, this); 
@@ -146,7 +145,9 @@ public void drawLineHelper(Point prev, Point next){
         }
 
 	}
-	
+	 DraggableIcon icon1;
+	 DraggableIcon icon2;
+
     private class MouseHandler extends MouseAdapter 
 	{
 		boolean twoPoints = false;
@@ -161,22 +162,27 @@ public void drawLineHelper(Point prev, Point next){
 			{
 				
 				DraggableIcon thisIcon = (DraggableIcon)obj;
-				System.out.println(thisIcon.getClass());
-				System.out.print(thisIcon.dragPoint());
 				if(twoPoints == false)
 		        {
+					icon1 = thisIcon;
 		      	   nextPoint = thisIcon.dragPoint();
 		       	   twoPoints = true;
 	            }
 	            else
 	            {
+	            	icon2 = thisIcon;
 		       	   prevPoint = nextPoint;
 		       	   nextPoint = thisIcon.dragPoint();
 		       	   drawLineHelper(prevPoint, nextPoint);
 		       	   lineDrawn = true;
+		       	   
 		       	   DataHandler.addArrow(new DrawArrow(prevPoint, nextPoint, lineReference));
 		       	   if(lineDrawn == true)
 		       	   {
+			       		Nodes n = new Nodes();
+			    		nodeObserver o = new nodeObserver();
+			    		n.addObserver(o);
+			    		n.addSingle(new Nodes(icon1,icon2,new DrawArrow(prevPoint, nextPoint, lineReference)));
 		       		   prevPoint = null;
 		       		   nextPoint = null;
 	        	   }
@@ -261,6 +267,10 @@ public void drawLineHelper(Point prev, Point next){
 				if((imgpth).contains("Black_Circle")){name = "circle";} //sets the name variable for the Draggable icon 
 				else if((imgpth).contains("rectangle")){name = "rectangle";}//sets the name variable for the Draggable icon 
 					temp = new DraggableIcon(imgpth, false, name);
+					Nodes n = new Nodes();
+					nodeObserver o = new nodeObserver();
+					n.addObserver(o);
+					n.addSingle(new Nodes(temp));
 //					ADD PROPERTIES
 					temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
 					temp.addMouseListener(mouseHandler);
@@ -272,7 +282,6 @@ public void drawLineHelper(Point prev, Point next){
 //				ADD PROPERTIES
 
 				//observable.addObserver(observer);
-				observer.update(observable, (Object) DataHandler.getIconRecord());
 				updatePanel();
 		
 			} else {

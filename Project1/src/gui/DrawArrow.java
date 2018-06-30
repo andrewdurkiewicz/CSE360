@@ -17,7 +17,7 @@ public class DrawArrow extends JLabel{
 	public Point pointA;
 	public Point pointB;
 	private Color c;
-	private boolean plainLine, dashedLine1, dashedLine1Bold, dashedLine2, 
+	public boolean plainLine, dashedLine1, dashedLine1Bold, dashedLine2, 
 	   				dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold,
 	   				inherit, aggregate, associate;
 	
