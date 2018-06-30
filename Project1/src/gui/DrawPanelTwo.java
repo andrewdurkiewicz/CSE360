@@ -145,7 +145,9 @@ public void drawLineHelper(Point prev, Point next){
         }
 
 	}
-	
+	static DraggableIcon icon1;
+	static DraggableIcon icon2;
+
     private class MouseHandler extends MouseAdapter 
 	{
 		boolean twoPoints = false;
@@ -160,22 +162,27 @@ public void drawLineHelper(Point prev, Point next){
 			{
 				
 				DraggableIcon thisIcon = (DraggableIcon)obj;
-				System.out.println(thisIcon.getClass());
-				System.out.print(thisIcon.dragPoint());
 				if(twoPoints == false)
 		        {
+					icon1 = thisIcon;
 		      	   nextPoint = thisIcon.dragPoint();
 		       	   twoPoints = true;
 	            }
 	            else
 	            {
+	            	icon2 = thisIcon;
 		       	   prevPoint = nextPoint;
 		       	   nextPoint = thisIcon.dragPoint();
 		       	   drawLineHelper(prevPoint, nextPoint);
 		       	   lineDrawn = true;
+		       	   
 		       	   DataHandler.addArrow(new DrawArrow(prevPoint, nextPoint, lineReference));
 		       	   if(lineDrawn == true)
 		       	   {
+			       		Nodes n = new Nodes();
+			    		nodeObserver o = new nodeObserver();
+			    		n.addObserver(o);
+			    		n.addSingle(new Nodes(icon1,icon2,new DrawArrow(prevPoint, nextPoint, lineReference)));
 		       		   prevPoint = null;
 		       		   nextPoint = null;
 	        	   }

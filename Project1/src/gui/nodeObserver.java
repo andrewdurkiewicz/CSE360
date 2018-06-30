@@ -18,13 +18,32 @@ public class nodeObserver implements Observer {
 		{cpy.add(n);}
 		for(Nodes n : cpy) {
 			if(n.type == "circle" && n.isSingle == true){
-				editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + "\nPublic interface icon" + nodeTotal);;
+				 changeText("\nPublic interface icon" + nodeTotal);
 			}
-			if(n.type == "rectangle" && n.isSingle == true){
-				editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + "\nPublic class icon" + nodeTotal);;
+			else if(n.type == "rectangle" && n.isSingle == true){
+				changeText("\nPublic class icon" + nodeTotal);;
+			}
+			else if(n.isSingle == false && n.arrow.inherit)
+			{
+				System.out.println("inheritance");
+			}
+			else if(n.isSingle == false && n.arrow.aggregate)
+			{
+				System.out.println("aggregate");
+
+			}
+			else if(n.isSingle == false && n.arrow.associate)
+			{
+				System.out.println("association");
+
 			}
 			nodeTotal++;
 		}
+	}
+	
+	public void changeText(String s)
+	{
+		editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + s);
 	}
 
 }
