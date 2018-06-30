@@ -20,7 +20,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	 * 
 	 */
 	DragSource dSource;
-	public static String iconClass;
+	public String iconClass;
 	private String imgSource;
 	public Point dragPoint() {
 		return this.getLocation();
@@ -64,9 +64,6 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		imgSource = srcImg;
 	}
 	
-	public static void setImgName(String name) {
-		
-	}
 	
 
 	

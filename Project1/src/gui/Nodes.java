@@ -7,7 +7,8 @@ import java.util.Observable;
 
 public class Nodes extends Observable{
 	ArrayList<Nodes> n = new ArrayList<Nodes>();
-
+	String type;
+	boolean isSingle;
 	DraggableIcon start;
 	DraggableIcon end;
 	DrawArrow arrow;
@@ -17,19 +18,17 @@ public class Nodes extends Observable{
 	}
 	public Nodes(DraggableIcon st){
 		super();
-
+		this.isSingle = true;
+		this.type = st.iconClass;
 		this.start = st;
-		this.addObserver(new nodeObserver());
-
-		
 		
 	}
 	public Nodes(DraggableIcon st, DraggableIcon e, DrawArrow a) {
 		super();
+		this.isSingle = false;
 		this.start = st;
 		this.end = e;
 		this.arrow = a;
-		this.addObserver(new nodeObserver());
 
 
 	}
@@ -38,7 +37,7 @@ public class Nodes extends Observable{
 		addthis.addObserver(new nodeObserver());
 		n.add(addthis);
 		setChanged();
-		notifyObservers();
+		notifyObservers(n);
 		
 	}
 	public void addConnect(Nodes addthis) {
@@ -51,4 +50,5 @@ public class Nodes extends Observable{
 	{
 		return n;
 	}
+	
 }
