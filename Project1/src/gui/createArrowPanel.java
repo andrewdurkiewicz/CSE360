@@ -48,7 +48,7 @@ public class createArrowPanel extends JPanel {
 		JPanel radioButtons = new JPanel();
 		radioButtons.setLayout(new BoxLayout(radioButtons, BoxLayout.PAGE_AXIS));
 		
-		plainLine = true;
+		associate = true;
 		
 		class RadioListener implements ItemListener {
 			public String state;
