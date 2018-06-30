@@ -11,10 +11,9 @@ public class nodeObserver implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		ArrayList<Nodes> a = (ArrayList<Nodes>) arg;
+		cpy.add((Nodes) arg);
 		editFontPanel.getTextArea().setText("");
 		 nodeTotal= 1;
-		 cpy.add(a.get(0));
 		for(Nodes n : cpy) {
 			if(n.type == "circle" && n.isSingle == true){
 				 changeText("\nPublic interface icon" + nodeTotal);
@@ -24,13 +23,13 @@ public class nodeObserver implements Observer {
 			}
 			else if(n.isSingle == false && n.arrow.inherit)
 			{
-				 System.out.println(a.get(0).asSinglet1.type);
 
 				System.out.println("inheritance");
 			}
 			else if(n.isSingle == false && n.arrow.aggregate)
 			{
-				System.out.println("aggregate");
+				System.out.println(cpy.contains(n.asSinglet1));
+				System.out.println(cpy.contains(n.asSinglet2));
 
 			}
 			else if(n.isSingle == false && n.arrow.associate)
@@ -38,7 +37,7 @@ public class nodeObserver implements Observer {
 				System.out.println("association");
 
 			}
-			nodeTotal++;
+			if(n.isSingle == true) {nodeTotal++;}
 			
 		}
 	}

@@ -39,12 +39,12 @@ public class Nodes extends Observable{
 
 
 	}
-	public void addSingle(Nodes addthis) {
+	public void addSingle(Nodes newNode) {
 
-		addthis.addObserver(new nodeObserver());
-		n.add(addthis);
+		newNode.addObserver(new nodeObserver());
+		n.add(newNode);
 		setChanged();
-		notifyObservers(n);
+		notifyObservers(newNode);
 		
 	}
 	public void addConnect(Nodes addthis) {

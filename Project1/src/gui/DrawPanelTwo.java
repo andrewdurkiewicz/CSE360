@@ -145,8 +145,8 @@ public void drawLineHelper(Point prev, Point next){
         }
 
 	}
-	static DraggableIcon icon1;
-	static DraggableIcon icon2;
+	 DraggableIcon icon1;
+	 DraggableIcon icon2;
 
     private class MouseHandler extends MouseAdapter 
 	{
@@ -267,6 +267,10 @@ public void drawLineHelper(Point prev, Point next){
 				if((imgpth).contains("Black_Circle")){name = "circle";} //sets the name variable for the Draggable icon 
 				else if((imgpth).contains("rectangle")){name = "rectangle";}//sets the name variable for the Draggable icon 
 					temp = new DraggableIcon(imgpth, false, name);
+					Nodes n = new Nodes();
+					nodeObserver o = new nodeObserver();
+					n.addObserver(o);
+					n.addSingle(new Nodes(temp));
 //					ADD PROPERTIES
 					temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
 					temp.addMouseListener(mouseHandler);

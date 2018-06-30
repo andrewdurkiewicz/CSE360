@@ -92,10 +92,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	@Override
 	public void dragDropEnd(DragSourceDropEvent dsde) {
 		// Do Nothing, required due to implemented class
-		Nodes n = new Nodes();
-		nodeObserver o = new nodeObserver();
-		n.addObserver(o);
-		n.addSingle(new Nodes(this));
+
 	}
 
 
