@@ -14,9 +14,9 @@ public class editFontPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	static JTextArea textInput;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
-	Font de_font = new Font("Serif", Font.PLAIN, 18);
-	int[] s_values = {8, 12, 18, 20, 22, 48};
-	String[] s_names = {"8", "10", "12", "14", "16"};
+	Font de_font = new Font("Serif", Font.PLAIN,12);
+	int[] s_values = {10, 12, 14, 16};
+	String[] s_names = {"10", "12", "14", "16"};
 	public editFontPanel()
 	{	
 		textInput = new createTextPanel();
@@ -52,10 +52,10 @@ public class editFontPanel extends JPanel {
 				int getFont = textInput.getFont().getStyle();
 				String family = textInput.getFont().getFamily();				
 				if(textInput.getFont().isBold() != true) {
-					textInput.setFont(new Font(family, getFont + Font.BOLD, 18));
+					textInput.setFont(new Font(family, getFont + Font.BOLD, 12));
 				}
 				else {
-					textInput.setFont(new Font(family, getFont - Font.BOLD, 18));
+					textInput.setFont(new Font(family, getFont - Font.BOLD, 12));
 				}
 			
 			}
@@ -73,7 +73,7 @@ public class editFontPanel extends JPanel {
 					textInput.setFont(new Font(family, Font.ITALIC, size));
 				}
 				else {
-					textInput.setFont(new Font(family, getFont - Font.ITALIC, 18));
+					textInput.setFont(new Font(family, getFont - Font.ITALIC, 12));
 				}
 			}
 		});

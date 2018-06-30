@@ -16,7 +16,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	/**
 	 * 
 	 */
-
+	boolean twoPoints;
 	private String name;
 	private static final long serialVersionUID = 1L;
 	private Point mousePos;
@@ -150,8 +150,8 @@ public void drawLineHelper(Point prev, Point next){
 
     private class MouseHandler extends MouseAdapter 
 	{
-		boolean twoPoints = false;
-		boolean lineDrawn = false;
+		 public boolean twoPoints = false;
+		public boolean lineDrawn = false;
 		
 		@Override
 	    public void mousePressed(MouseEvent e)
@@ -187,8 +187,10 @@ public void drawLineHelper(Point prev, Point next){
 		       		   nextPoint = null;
 	        	   }
 		       	   twoPoints = false;
+
 		       	}
 			}
+			else {twoPoints = false; lineDrawn = false;}
 	     }
 		
     }
@@ -255,6 +257,7 @@ public void drawLineHelper(Point prev, Point next){
 	public void drop(DropTargetDropEvent dtde) {
 		String imgpth;
 		DraggableIcon temp;
+		twoPoints = false;
 
 		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
 		try {

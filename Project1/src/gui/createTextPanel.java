@@ -19,9 +19,9 @@ public class createTextPanel extends JTextArea{
 	
 	private static final long serialVersionUID = 1L;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
-	Font de_font = new Font("Serif", Font.PLAIN, 18);
-	int[] s_values = {8, 12, 18, 20, 22, 48};
-	String[] s_names = {"8", "10", "12", "14", "16"};
+	Font de_font = new Font("Serif", Font.PLAIN, 6);
+	int[] s_values = {6, 8, 18, 20, 22, 48};
+	String[] s_names = {"6", "8", "12", "14", "16"};
 	Border border = BorderFactory.createLineBorder(Color.BLACK);
 	//JPanel editFont = new editFontPanel();
 	public createTextPanel(){

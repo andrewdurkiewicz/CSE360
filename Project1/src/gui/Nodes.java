@@ -27,10 +27,10 @@ public class Nodes extends Observable{
 	public Nodes(DraggableIcon st, DraggableIcon e, DrawArrow a) {
 		super();
 		
-		this.isSingle = false;
-		this.start = st;
-		this.end = e;
-		this.arrow = a;
+		isSingle = false;
+		start = st;
+		end = e;
+		arrow = a;
 		
 
 
@@ -38,7 +38,7 @@ public class Nodes extends Observable{
 	}
 	public void addSingle(Nodes newNode) {
 		if(newNode.isSingle == true) {nodelist++;}
-		newNode.start.persistantName = "icon" + nodelist;
+		newNode.start.persistantName = "Icon" + nodelist;
 		newNode.addObserver(new nodeObserver());
 		setChanged();
 		notifyObservers(newNode);
