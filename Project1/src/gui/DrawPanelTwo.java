@@ -158,9 +158,13 @@ public void drawLineHelper(Point prev, Point next){
 	    {
 			Object obj = e.getSource();
 
-			if(e.isAltDown())
+			if(e.isAltDown() && obj.getClass().getSimpleName().equals("DraggableIcon"))
 			{
 				DataHandler.removeIcon((DraggableIcon) obj);
+				updatePanel();
+			}
+			else if(e.isAltDown() && obj.getClass().getSimpleName().equals("DrawArrow")) {
+				DataHandler.removeArrow((DrawArrow) obj);
 				updatePanel();
 			}
 
@@ -232,6 +236,7 @@ public void drawLineHelper(Point prev, Point next){
 	public void drawPanelLines() {
 		for(DrawArrow arr:DataHandler.getArrowRecord()) {
 			arr.setBounds(0,0, 870, 485);
+			arr.addMouseListener(mouseHandler);
 			this.add(arr);
 		}
 	}
