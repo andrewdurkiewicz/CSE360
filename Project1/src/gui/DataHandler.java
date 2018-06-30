@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Observable;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -24,8 +25,6 @@ public class DataHandler {
 	 */
 	private static ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>(); //Icons
 	private static ArrayList<DrawArrow> ArrowRecord = new ArrayList<DrawArrow>(); //User Added Lines
-	
-	
 	
 	/**
 	 * Opens a save dialog where the user can name and save their file.
@@ -66,6 +65,7 @@ public class DataHandler {
 	 * Opens a load dialog where the user can select a file to open
 	 * @param parent Parent Frame for reference to set dialog location (can be null)
 	 */
+	@SuppressWarnings("unchecked")
 	public static void load(JFrame parent) {
 		//confirm with the user that this will override any work they may have done
 		int res = JOptionPane.showConfirmDialog(null, "This will overwrite any progress!\nLoad File?", "Warning", JOptionPane.YES_NO_OPTION);
@@ -83,6 +83,7 @@ public class DataHandler {
 					FileInputStream inStream = new FileInputStream(selFile);
 					ObjectInputStream oiStream = new ObjectInputStream(inStream);
 					//load root arraylist and assign children to user data objects
+					@SuppressWarnings("rawtypes")
 					ArrayList<ArrayList> temp = (ArrayList<ArrayList>) oiStream.readObject();
 					IconRecord = temp.get(0);
 					ArrowRecord = temp.get(1);

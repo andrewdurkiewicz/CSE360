@@ -3,6 +3,8 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
@@ -10,10 +12,12 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 
-public class createTextPanel extends JTextArea{
+public class createTextPanel extends JTextArea implements Observer{
 	/**
 	 * 
 	 */
+	private iconObservable iconUpdate;
+	
 	private static final long serialVersionUID = 1L;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
 	Font de_font = new Font("Serif", Font.PLAIN, 18);
@@ -71,6 +75,14 @@ public class createTextPanel extends JTextArea{
 		this.addMouseListener(listener);
 		this.setSize(new Dimension(100, 100));
 		//editFont.setIgnoreRepaint(true);
+	}
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		iconUpdate = (iconObservable) o;
+		System.out.println(iconUpdate.getIconName());
+		System.out.println(o);
+		
 	}
 	
 	
