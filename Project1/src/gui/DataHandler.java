@@ -26,7 +26,6 @@ public class DataHandler {
 	private static ArrayList<DraggableIcon> IconRecord = new ArrayList<DraggableIcon>(); //Icons
 	private static ArrayList<DrawArrow> ArrowRecord = new ArrayList<DrawArrow>(); //User Added Lines
 	
-	
 	/**
 	 * Opens a save dialog where the user can name and save their file.
 	 * @param parent Parent Frame for reference to set dialog location (can be null)

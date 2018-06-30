@@ -36,18 +36,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 		}
 		try {
 			this.setIcon(new ImageIcon(ImageIO.read(new File(imgSource))));
-			if(iconCounter > 0)
-			{
-				if(iconClass == "circle")
-				{
-			        editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + "\nPublic interface icon" + iconCounter + " {\n}");
-				}
-				else if(iconClass == "rectangle")
-				{
-			        editFontPanel.getTextArea().setText(editFontPanel.getTextArea().getText() + "\n" + "Public icon" + iconCounter + " {\n}");
-				}
-			}
-	        iconCounter++;
+
 	        
 
 
