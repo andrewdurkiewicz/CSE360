@@ -32,7 +32,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	 */
 	
 	public DrawPanelTwo(){
-		
+
 		setBackground(Color.WHITE);
 		this.setLayout(null);
 		new DropTarget(this, this); 

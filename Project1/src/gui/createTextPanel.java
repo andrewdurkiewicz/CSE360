@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 
-public class createTextPanel extends JTextArea{
+public class createTextPanel extends JTextArea implements Observer{
 	/**
 	 * 
 	 */
@@ -71,11 +71,17 @@ public class createTextPanel extends JTextArea{
 				}
 			}
 		};
+
 		this.addMouseListener(listener);
 		this.setSize(new Dimension(100, 100));
 		//editFont.setIgnoreRepaint(true);
 	}
 
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		System.out.println("got to the createTextPanel update void function");
+	}
 	
 	
 

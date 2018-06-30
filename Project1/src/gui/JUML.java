@@ -13,12 +13,14 @@ public class JUML {
 
 	public static void main(String[] args)
 	{
+
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run() 
 			{
 				try 
 				{
+
 					new DrawFrame();
 				} 
 				catch (Exception e) 

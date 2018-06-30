@@ -49,8 +49,15 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 
 	@Override
 	public void dragGestureRecognized(DragGestureEvent dge) {
+		System.out.println("here");
 		Transferable txfr = new StringSelection(imgSource);
 		dSource.startDrag(dge, DragSource.DefaultCopyDrop, txfr, this);
+		Nodes n = new Nodes();
+		nodeObserver o = new nodeObserver();
+		n.addObserver(o);
+		n.addSingle(new Nodes(this));
+
+		
 	}
 
 	public void setImgSource(String srcImg, String name) {
