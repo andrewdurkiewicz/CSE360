@@ -20,12 +20,12 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	 * 
 	 */
 	DragSource dSource;
-	public static String iconClass;
+	public String iconClass;
 	private String imgSource;
+	public String persistantName;
 	public Point dragPoint() {
 		return this.getLocation();
 	}
-	static int iconCounter = -1; //helps us skip the initialization issues where it prints the 
 	public DraggableIcon(String ImageSource, boolean draggable, String s){
 		imgSource = ImageSource;
 		iconClass = s; //allows us to tell which type it is
@@ -49,17 +49,18 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 
 	@Override
 	public void dragGestureRecognized(DragGestureEvent dge) {
+		System.out.println("here");
 		Transferable txfr = new StringSelection(imgSource);
 		dSource.startDrag(dge, DragSource.DefaultCopyDrop, txfr, this);
+
+
+		
 	}
 
 	public void setImgSource(String srcImg, String name) {
 		imgSource = srcImg;
 	}
 	
-	public static void setImgName(String name) {
-		
-	}
 	
 
 	
@@ -91,7 +92,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	@Override
 	public void dragDropEnd(DragSourceDropEvent dsde) {
 		// Do Nothing, required due to implemented class
-		
+
 	}
 
 

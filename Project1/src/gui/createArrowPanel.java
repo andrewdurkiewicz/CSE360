@@ -202,11 +202,11 @@ public class createArrowPanel extends JPanel {
 		
 		JRadioButton associateButton = new JRadioButton("Association");
 		associateButton.addItemListener(radioListener);
+		associateButton.setSelected(true);
 		associateButton.setActionCommand("associate");
 		
 		JRadioButton plainLineButton = new JRadioButton("Plain Line");
 		plainLineButton.addItemListener(radioListener);
-		plainLineButton.setSelected(true);
 		plainLineButton.setActionCommand("plainLine");
 		
 		JRadioButton dashedLine1Button = new JRadioButton("Dashed Line (with 1 arrow)");
