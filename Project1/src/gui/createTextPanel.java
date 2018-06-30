@@ -12,11 +12,10 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 
-public class createTextPanel extends JTextArea implements Observer{
+public class createTextPanel extends JTextArea{
 	/**
 	 * 
 	 */
-	private iconObservable iconUpdate;
 	
 	private static final long serialVersionUID = 1L;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
@@ -76,14 +75,7 @@ public class createTextPanel extends JTextArea implements Observer{
 		this.setSize(new Dimension(100, 100));
 		//editFont.setIgnoreRepaint(true);
 	}
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		iconUpdate = (iconObservable) o;
-		System.out.println(iconUpdate.getIconName());
-		System.out.println(o);
-		
-	}
+
 	
 	
 

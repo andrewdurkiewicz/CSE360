@@ -16,8 +16,7 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	/**
 	 * 
 	 */
-	public iconObserver observer = new iconObserver(DataHandler.getIconRecord());
-	public iconObservable observable;
+
 	private String name;
 	private static final long serialVersionUID = 1L;
 	private Point mousePos;
@@ -272,7 +271,6 @@ public void drawLineHelper(Point prev, Point next){
 //				ADD PROPERTIES
 
 				//observable.addObserver(observer);
-				observer.update(observable, (Object) DataHandler.getIconRecord());
 				updatePanel();
 		
 			} else {
