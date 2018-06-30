@@ -7,7 +7,7 @@ import com.sun.xml.internal.ws.util.StringUtils;
 
 public class nodeObserver implements Observer {
 
-	public static ArrayList<Nodes> cpy = new ArrayList<Nodes>();
+	private static ArrayList<Nodes> cpy = new ArrayList<Nodes>();
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -16,12 +16,16 @@ public class nodeObserver implements Observer {
 		editFontPanel.getTextArea().setText("");
 		 if(((Nodes) arg).isSingle == false){
 			 delSingle((((Nodes) arg).start.persistantName), ((Nodes) arg).start.persistantName); }
-		for(Nodes n : cpy) {
+		int i = 0;
+		 for(Nodes n : cpy) {
+			 System.out.println(cpy.size());
+			 i++;
 			if(n.type == "circle" && n.isSingle == true){
 				 changeText("\nPublic" + getImplementation(n.type) + " " + n.start.persistantName);
 			}
 			else if(n.type == "rectangle" && n.isSingle == true){
 				 changeText("\nPublic" + getImplementation(n.type) + " " + n.start.persistantName);
+				 continue;
 			}
 			else if(n.isSingle == false && n.arrow.inherit)
 			{
