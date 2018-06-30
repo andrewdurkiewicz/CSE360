@@ -22,6 +22,7 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	DragSource dSource;
 	public String iconClass;
 	private String imgSource;
+	public String persistantName;
 	public Point dragPoint() {
 		return this.getLocation();
 	}

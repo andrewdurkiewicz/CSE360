@@ -8,7 +8,7 @@ import java.util.Observable;
 public class Nodes extends Observable{
 	ArrayList<Nodes> n = new ArrayList<Nodes>();
 	String type;
-	
+	static int nodelist = 0;
 	boolean isSingle;
 	DraggableIcon start;
 	DraggableIcon end;
@@ -33,14 +33,15 @@ public class Nodes extends Observable{
 		this.start = st;
 		this.end = e;
 		this.arrow = a;
-		this.asSinglet1 = new Nodes(st);
+		
 		this.asSinglet2 = new Nodes(e);
 
 
 
 	}
 	public void addSingle(Nodes newNode) {
-
+		nodelist++;
+		newNode.start.persistantName = "icon" + nodelist;
 		newNode.addObserver(new nodeObserver());
 		n.add(newNode);
 		setChanged();
