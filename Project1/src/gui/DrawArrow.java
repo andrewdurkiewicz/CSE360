@@ -21,7 +21,8 @@ public class DrawArrow extends JLabel{
 	   				dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold,
 	   				inherit, aggregate, associate;
 	
-	public DrawArrow(Point p1, Point p2, ButtonPanel line) {
+	public DrawArrow(Point p1, Point p2, ButtonPanel line) 
+	{
 		setPos(p1,p2);
 		setOpaque(true);
 		
@@ -41,7 +42,8 @@ public class DrawArrow extends JLabel{
 		associate = line.arrowPanel.associate;
 	}
 	
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) 
+	{
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(c);
         
@@ -146,7 +148,8 @@ public class DrawArrow extends JLabel{
 	}
 	
 
-	public void setPos(Point A, Point B) {
+	public void setPos(Point A, Point B)
+	{
 		pointA = A;
 		pointB = B;
 	}

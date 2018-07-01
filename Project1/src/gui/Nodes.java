@@ -13,37 +13,34 @@ public class Nodes extends Observable{
 	DraggableIcon end;
 	DrawArrow arrow;
 
-
-	public Nodes() {
+	public Nodes() 
+	{
 		super();
 	}
-	public Nodes(DraggableIcon st){
+	
+	public Nodes(DraggableIcon st)
+	{
 		super();
 		this.isSingle = true;
 		this.type = st.iconClass;
 		this.start = st;
-		
 	}
-	public Nodes(DraggableIcon st, DraggableIcon e, DrawArrow a) {
+	
+	public Nodes(DraggableIcon st, DraggableIcon e, DrawArrow a) 
+	{
 		super();
-		
 		isSingle = false;
 		start = st;
 		end = e;
 		arrow = a;
-		
-
-
-
 	}
-	public void addSingle(Nodes newNode) {
+	
+	public void addSingle(Nodes newNode) 
+	{
 		if(newNode.isSingle == true) {nodelist++;}
 		newNode.start.persistantName = "Icon" + nodelist;
 		newNode.addObserver(new nodeObserver());
 		setChanged();
 		notifyObservers(newNode);
-		
 	}
-
-	
 }

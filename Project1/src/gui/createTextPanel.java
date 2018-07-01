@@ -13,9 +13,6 @@ import javax.swing.border.Border;
 
 
 public class createTextPanel extends JTextArea{
-	/**
-	 * 
-	 */
 	
 	private static final long serialVersionUID = 1L;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
@@ -23,58 +20,42 @@ public class createTextPanel extends JTextArea{
 	int[] s_values = {6, 8, 18, 20, 22, 48};
 	String[] s_names = {"6", "8", "12", "14", "16"};
 	Border border = BorderFactory.createLineBorder(Color.BLACK);
+	
 	//JPanel editFont = new editFontPanel();
-	public createTextPanel(){
+	public createTextPanel()
+	{
 		this.setLayout(new BorderLayout());
-		
-		//JPanel textPanel = new JPanel();
-		//textPanel.setSize(new Dimension(100, 100));
 		this.setLineWrap(true);
 		this.setBorder(BorderFactory.createCompoundBorder(border,
-				BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-		
-
+		BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		this.setEditable(false);
 		
-		MouseListener listener = new MouseListener() {
+		MouseListener listener = new MouseListener() 
+		{
+			@Override
+			public void mouseReleased(MouseEvent e) {}
 			
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 			
 			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseExited(MouseEvent e) {}
 			
 			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseEntered(MouseEvent e) {}
 			
 			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				if(getText().compareTo("Type here....") == 0) {
+			public void mouseClicked(MouseEvent e) 
+			{
+				if(getText().compareTo("Type here....") == 0)
+				{
 					setText("");
-
 				}
 			}
 		};
 
 		this.addMouseListener(listener);
 		this.setSize(new Dimension(100, 100));
-		//editFont.setIgnoreRepaint(true);
 	}
 
 

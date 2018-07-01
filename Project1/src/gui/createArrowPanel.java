@@ -10,34 +10,36 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class createArrowPanel extends JPanel {
+public class createArrowPanel extends JPanel 
+{
 	public Color c;
 	public boolean plainLine, dashedLine1, dashedLine1Bold, dashedLine2, 
 				   dashedLine2Bold, solidArrow, solidArrowBold, solidArrow2, solidArrow2Bold,
 				   inherit, aggregate, associate;
 	
-	public createArrowPanel() {
-		
+	public createArrowPanel() 
+	{
 		// sets default line color to black
 		c = Color.black;
 		
 		/* Line Color Block */
 		JPanel lineColor = new JPanel();
-		
 		JLabel lineColorLabel = new JLabel("Line Color:");
-		
+		JLabel info1 = new JLabel("PRESS AND HOLD ALT + CLICK");
+		JLabel info2 = new JLabel("TO DELETE ITEMS");
 		JButton editColor = new JButton("");
 		editColor.setBackground(Color.black);
-		editColor.addActionListener(new ActionListener() {
+		editColor.addActionListener(new ActionListener() 
+		{
 				
 		@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					Color newColor = JColorChooser.showDialog(null, "Choose Color", Color.black);
-					editColor.setBackground(newColor);
-					c = newColor;
-				}
-			});
+		public void actionPerformed(ActionEvent e) 
+		{
+			Color newColor = JColorChooser.showDialog(null, "Choose Color", Color.black);
+			editColor.setBackground(newColor);
+			c = newColor;
+		}
+		});
 		
 		lineColor.add(lineColorLabel);
 		lineColor.add(editColor);
@@ -50,9 +52,11 @@ public class createArrowPanel extends JPanel {
 		
 		associate = true;
 		
-		class RadioListener implements ItemListener {
+		class RadioListener implements ItemListener 
+		{
 			public String state;
-            public void itemStateChanged(ItemEvent ev) {
+            public void itemStateChanged(ItemEvent ev) 
+            {
                 boolean selected = (ev.getStateChange() == ItemEvent.SELECTED);
                 AbstractButton b1 = (AbstractButton) ev.getItemSelectable();
                 String command = b1.getActionCommand();
@@ -274,5 +278,8 @@ public class createArrowPanel extends JPanel {
 		// adding panels to panel
 		this.add(lineColor);
 		this.add(radioButtons);
+		this.add(info1, BorderLayout.SOUTH);
+		this.add(info2, BorderLayout.SOUTH);
+
 	}
 }

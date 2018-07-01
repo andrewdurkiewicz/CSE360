@@ -2,14 +2,10 @@ package gui;
 
 public class Triangle extends DraggableIcon {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	public Triangle() {
+	public Triangle() 
+	{
 		super("resources//100px-Simple_triangle.png", true, "triangle");
-		// TODO Auto-generated constructor stub
 	}
-
 }

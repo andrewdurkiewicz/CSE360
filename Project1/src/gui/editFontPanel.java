@@ -8,15 +8,14 @@ import javax.swing.border.*;
 
 
 public class editFontPanel extends JPanel {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	static JTextArea textInput;
 	String[] families = { "Serif", "SansSerif", "Monospaced" };
 	Font de_font = new Font("Serif", Font.PLAIN,12);
 	int[] s_values = {10, 12, 14, 16};
 	String[] s_names = {"10", "12", "14", "16"};
+	
 	public editFontPanel()
 	{	
 		textInput = new createTextPanel();
@@ -29,58 +28,66 @@ public class editFontPanel extends JPanel {
 		JButton editBorderColor = new JButton("Edit Border Color");
 		JButton editColor = new JButton("Edit Font Color");
 		JButton clear = new JButton("Clear Text");
-		editBorderColor.addActionListener(new ActionListener() {
+		editBorderColor.addActionListener(new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) 
+			{
 				Color c = JColorChooser.showDialog(null, "Choose Color", Color.black);
 				Border border = BorderFactory.createLineBorder(c);
 				textInput.setBorder(BorderFactory.createCompoundBorder(border,
-						BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+				BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 			}
 		});
-		clear.addActionListener(new ActionListener() {	
+		clear.addActionListener(new ActionListener() 
+		{	
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				textInput.setText("");
 			}
 		});
-		en_bold.addActionListener(new ActionListener() {		
+		en_bold.addActionListener(new ActionListener() 
+		{		
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) 
+			{
 				int getFont = textInput.getFont().getStyle();
 				String family = textInput.getFont().getFamily();				
-				if(textInput.getFont().isBold() != true) {
+				if(textInput.getFont().isBold() != true) 
+				{
 					textInput.setFont(new Font(family, getFont + Font.BOLD, 12));
 				}
-				else {
+				else 
+				{
 					textInput.setFont(new Font(family, getFont - Font.BOLD, 12));
 				}
-			
 			}
 		});
-		en_italic.addActionListener(new ActionListener() {
-			
+		en_italic.addActionListener(new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e)
+			{
 				int getFont = textInput.getFont().getStyle();
 				String family = textInput.getFont().getFamily();
 				int size = textInput.getFont().getSize();
 
-				if(textInput.getFont().isItalic() != true) {
+				if(textInput.getFont().isItalic() != true)
+				{
 					textInput.setFont(new Font(family, Font.ITALIC, size));
 				}
-				else {
+				else 
+				{
 					textInput.setFont(new Font(family, getFont - Font.ITALIC, 12));
 				}
 			}
 		});
-		editColor.addActionListener(new ActionListener() {	
+		editColor.addActionListener(new ActionListener() 
+		{	
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) 
+			{
 				Color c = JColorChooser.showDialog(null, "Choose Color", Color.black);
 				textInput.setForeground(c);
 			}
@@ -94,29 +101,32 @@ public class editFontPanel extends JPanel {
 		
 		JComboBox<String> fontfamily = new JComboBox<>(families);
 		JComboBox<String> sizeValues = new JComboBox<>(s_names);
-		fontfamily.addItemListener(new ItemListener() {
+		fontfamily.addItemListener(new ItemListener()
+		{
 			int getFont = textInput.getFont().getStyle();
 			String family = textInput.getFont().getFamily();
 			int size = textInput.getFont().getSize();
+		
 			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
-				if (e.getStateChange() == ItemEvent.SELECTED) {
+			public void itemStateChanged(ItemEvent e) 
+			{
+				if (e.getStateChange() == ItemEvent.SELECTED) 
+				{
 					String item = (String) e.getItem();
-					
 					textInput.setFont(new Font(item, getFont, size));
 				}
 			}
 		});
-		sizeValues.addItemListener(new ItemListener() {
+		sizeValues.addItemListener(new ItemListener() 
+		{
 			int getFont = textInput.getFont().getStyle();
 			String family = textInput.getFont().getFamily();
+			
 			@Override
-			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
+			public void itemStateChanged(ItemEvent e)
+			{
 				String changeSize = (String) e.getItem();
 				textInput.setFont(new Font(family, getFont, Integer.valueOf(changeSize)));
-
 			}
 		});
 		textInput.setFont(de_font);
@@ -130,14 +140,9 @@ public class editFontPanel extends JPanel {
 		this.add(textInput, BorderLayout.CENTER);
 		this.add(collectButtons,BorderLayout.SOUTH);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-
-
-		
-		
 	}
 	public static JTextArea getTextArea()
 	{
-		return textInput;
-		
+		return textInput;	
 	}
 }

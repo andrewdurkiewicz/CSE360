@@ -7,7 +7,8 @@ import java.awt.event.ActionEvent;
 
 
 
-public class DrawFrame extends JFrame {
+public class DrawFrame extends JFrame 
+{
 	/**
 	 * 
 	 * GUI class.
@@ -22,7 +23,8 @@ public class DrawFrame extends JFrame {
 	 * Default Constructor.
 	 * Used to create a new instance of the GUI and makes it visible
 	 */
-	public DrawFrame() {
+	public DrawFrame() 
+	{
 		initialize();
 		mainWindow.setVisible(true);
 	}
@@ -30,8 +32,8 @@ public class DrawFrame extends JFrame {
 	/**
 	 * Creates GUI objects and populates the gui with UI Components
 	 */
-	private void initialize() {
-		//potato
+	private void initialize()
+	{
 		//Create Basic structure and assign the properties of the JFrame and Main Content Pane
 		mainWindow = new JFrame();
 		mainWindow.setSize(new Dimension(1400, 900)); //Needs to be a bit over the sum of all componen
@@ -72,16 +74,20 @@ public class DrawFrame extends JFrame {
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmSave = new JMenuItem("Save");
-		mntmSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		mntmSave.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				DataHandler.save(mainWindow);
 			}
 		});
 		mnFile.add(mntmSave);
 		
 		JMenuItem mntmLoad = new JMenuItem("Load");
-		mntmLoad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		mntmLoad.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				DataHandler.load(mainWindow);
 				//After records are set, draw everything
 				dpTwo.updatePanel();
@@ -92,8 +98,10 @@ public class DrawFrame extends JFrame {
 		mnFile.add(mntmLoad);
 		
 		JMenuItem mntmAbout = new JMenuItem("About");
-		mntmAbout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		mntmAbout.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				JOptionPane.showMessageDialog(mainWindow, "J-UML\nProject 2\n"
 						+ "************Authors************\n"
 						+ "Zach Carnago\nCody Roberson\nTyler Cole\nAndrew Durkiewicz", "About", JOptionPane.PLAIN_MESSAGE);
@@ -102,11 +110,14 @@ public class DrawFrame extends JFrame {
 		mnFile.add(mntmAbout);
 		
 		JMenuItem mntmQuit = new JMenuItem("Quit");
-		mntmQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		mntmQuit.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
 				int res = JOptionPane.showConfirmDialog(null, "If you have unsaved changes, they will be lost.\n"
 						+ "Close?", "Warning", JOptionPane.YES_NO_OPTION);
-				if(res==0) {
+				if(res==0) 
+				{
 					System.exit(0);
 				}
 			}

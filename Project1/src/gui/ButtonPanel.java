@@ -3,7 +3,8 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class ButtonPanel extends JPanel {
+public class ButtonPanel extends JPanel
+{
 	public createArrowPanel arrowPanel;
 	
 	public ButtonPanel()
@@ -14,7 +15,5 @@ public class ButtonPanel extends JPanel {
 		this.add(arrowPanel);
 		this.add(new editFontPanel());
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		
 	}
-
 }

@@ -13,9 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class DrawPanelTwo extends JPanel implements DropTargetListener{
-	/**
-	 * 
-	 */
+	
 	boolean twoPoints;
 	private String name;
 	private static final long serialVersionUID = 1L;
@@ -27,21 +25,21 @@ public class DrawPanelTwo extends JPanel implements DropTargetListener{
 	private Point nextPoint = new Point();
 	private MouseHandler mouseHandler = new MouseHandler();
 	public ButtonPanel lineReference;
+	
 	/**
 	 * Create the panel.
 	 */
-	
-	public DrawPanelTwo(){
-
+	public DrawPanelTwo()
+	{
 		setBackground(Color.WHITE);
 		this.setLayout(null);
 		new DropTarget(this, this); 
 		this.addMouseListener(mouseHandler);
         this.addMouseMotionListener(mouseHandler);
-		
 	}
 	 
-public void drawLineHelper(Point prev, Point next){
+public void drawLineHelper(Point prev, Point next)
+{
         Graphics g = getGraphics();
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(lineReference.arrowPanel.c);
@@ -209,21 +207,27 @@ public void drawLineHelper(Point prev, Point next){
      * Removes and re-adds all DraggableIcons to panel
      * Calls: DrawPanelLines
      */
-	public void updatePanel() {
+	public void updatePanel() 
+	{
 		this.removeAll();
 		drawPanelLines();
-		for(DraggableIcon currico:DataHandler.getIconRecord()) {
+		
+		for(DraggableIcon currico:DataHandler.getIconRecord()) 
+		{
 			this.add(currico);	
 		}
 		
 		this.repaint();
 	}
+	
 	/**
 	 * Call this to add a listener to all Icons in the IconRecord
 	 * (SHOULD NEVER BE CALLED EXCEPT FOR AFTER LOADING A SAVE FILE)
 	 */
-	public void addLoadedListeners() {
-		for(DraggableIcon currico:DataHandler.getIconRecord()) {
+	public void addLoadedListeners() 
+	{
+		for(DraggableIcon currico:DataHandler.getIconRecord())
+		{
 			currico.addMouseListener(mouseHandler);
 		}
 		
@@ -233,8 +237,10 @@ public void drawLineHelper(Point prev, Point next){
 	 * Re-Adds all lines to pane after forced pane redraw, 
 	 */
 	//TODO: [BUG][SEVERE](cody) Lines are initially drawn to DrawPanelTwo as graphics, after panel update, are readded as objects
-	public void drawPanelLines() {
-		for(DrawArrow arr:DataHandler.getArrowRecord()) {
+	public void drawPanelLines() 
+	{
+		for(DrawArrow arr:DataHandler.getArrowRecord()) 
+		{
 			arr.setBounds(0,0, 870, 485);
 			arr.addMouseListener(mouseHandler);
 			this.add(arr);
@@ -242,76 +248,73 @@ public void drawLineHelper(Point prev, Point next){
 	}
 	
 	@Override
-	public void dragEnter(DropTargetDragEvent dtde) {
-		// TODO Auto-generated method stub
-	}
+	public void dragEnter(DropTargetDragEvent dtde) {}
 	
 	@Override
-	public void dragOver(DropTargetDragEvent dtde) {
+	public void dragOver(DropTargetDragEvent dtde)
+	{
 		mousePos = dtde.getLocation();
-		
 	}
 
 	@Override
-	public void dropActionChanged(DropTargetDragEvent dtde) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void dropActionChanged(DropTargetDragEvent dtde) {}
 
 	@Override
-	public void dragExit(DropTargetEvent dte) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void dragExit(DropTargetEvent dte) {}
 
 	@Override
-	public void drop(DropTargetDropEvent dtde) {
+	public void drop(DropTargetDropEvent dtde) 
+	{
 		String imgpth;
 		DraggableIcon temp;
 		twoPoints = false;
 
 		//GET TXFR DATA AND ADD NEW COMPONENT TO PANEL
-		try {
+		try 
+		{
 			Transferable recvData = dtde.getTransferable();
-			if(recvData.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+			
+			if(recvData.isDataFlavorSupported(DataFlavor.stringFlavor)) 
+			{
 				dtde.acceptDrop(DnDConstants.ACTION_MOVE);
 				imgpth = (String) recvData.getTransferData(DataFlavor.stringFlavor);
 				dtde.getDropTargetContext().dropComplete(true);
-
-				if((imgpth).contains("Black_Circle")){name = "circle";} //sets the name variable for the Draggable icon 
-				else if((imgpth).contains("rectangle")){name = "rectangle";}//sets the name variable for the Draggable icon 
-					temp = new DraggableIcon(imgpth, false, name);
-					Nodes n = new Nodes();
-					nodeObserver o = new nodeObserver();
-					n.addObserver(o);
-					n.addSingle(new Nodes(temp));
-//					ADD PROPERTIES
-					temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
-					temp.addMouseListener(mouseHandler);
-					
-//					ADD to Handler.
-					DataHandler.addIcon(temp);
-
 				
-//				ADD PROPERTIES
-
-				//observable.addObserver(observer);
+				//sets the name variable for the Draggable icon 
+				if((imgpth).contains("Black_Circle"))
+				{
+					name = "circle";
+				}
+				//sets the name variable for the Draggable icon 
+				else if((imgpth).contains("rectangle"))
+				{
+					name = "rectangle";
+				}
+				
+				temp = new DraggableIcon(imgpth, false, name);
+				Nodes n = new Nodes();
+				nodeObserver o = new nodeObserver();
+				n.addObserver(o);
+				n.addSingle(new Nodes(temp));
+				
+				// ADD PROPERTIES
+				temp.setBounds(mousePos.x-50, mousePos.y-50, 100, 100);
+				temp.addMouseListener(mouseHandler);
+					
+				// ADD to Handler.
+				DataHandler.addIcon(temp);
+					
 				updatePanel();
-		
-			} else {
+			} 
+			else 
+			{
 				dtde.rejectDrop();
 			}
 			
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
 		}
-
 	  }
-
-
-
-
-
-	
-
 }

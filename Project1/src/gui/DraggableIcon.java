@@ -8,14 +8,13 @@ import java.awt.dnd.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 /**
-
  * Implements Drag and Drop handling on a JLabel.
  * <p>Is a JLabel component with drag and drop listeners implemented</p> 
  * @author Cody
  */
-public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener{
+public class DraggableIcon extends JLabel implements DragGestureListener, DragSourceListener
+{
 	/**
 	 * 
 	 */
@@ -26,74 +25,51 @@ public class DraggableIcon extends JLabel implements DragGestureListener, DragSo
 	public Point dragPoint() {
 		return this.getLocation();
 	}
-	public DraggableIcon(String ImageSource, boolean draggable, String s){
+	public DraggableIcon(String ImageSource, boolean draggable, String s)
+	{
 		imgSource = ImageSource;
 		iconClass = s; //allows us to tell which type it is
-		if(draggable) {
-		// Create Drag and Drop listener
-		dSource = new DragSource();
-		dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
+		if(draggable)
+		{
+			// Create Drag and Drop listener
+			dSource = new DragSource();
+			dSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, this);
 		}
-		try {
+		try 
+		{
 			this.setIcon(new ImageIcon(ImageIO.read(new File(imgSource))));
-
-	        
-
-
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
-		
-		
-	}
+}
 
 	@Override
-	public void dragGestureRecognized(DragGestureEvent dge) {
+	public void dragGestureRecognized(DragGestureEvent dge)
+	{
 		System.out.println("here");
 		Transferable txfr = new StringSelection(imgSource);
 		dSource.startDrag(dge, DragSource.DefaultCopyDrop, txfr, this);
-
-
-		
 	}
 
-	public void setImgSource(String srcImg, String name) {
+	public void setImgSource(String srcImg, String name)
+	{
 		imgSource = srcImg;
 	}
-	
-	
-
-	
 
 	@Override
-	public void dragEnter(DragSourceDragEvent dsde) {
-		// Do Nothing, required due to implemented class
-		
-	}
+	public void dragEnter(DragSourceDragEvent dsde) {}
 
 	@Override
-	public void dragOver(DragSourceDragEvent dsde) {
-		// Do Nothing, required due to implemented class
-		
-	}
+	public void dragOver(DragSourceDragEvent dsde) {}
 
 	@Override
-	public void dropActionChanged(DragSourceDragEvent dsde) {
-		// Do Nothing, required due to implemented class
-		
-	}
+	public void dropActionChanged(DragSourceDragEvent dsde) {}
 
 	@Override
-	public void dragExit(DragSourceEvent dse) {
-		// Do Nothing, required due to implemented class
-		
-	}
+	public void dragExit(DragSourceEvent dse) {}
 
 	@Override
-	public void dragDropEnd(DragSourceDropEvent dsde) {
-		// Do Nothing, required due to implemented class
-
-	}
-
-
+	public void dragDropEnd(DragSourceDropEvent dsde) {}
 }

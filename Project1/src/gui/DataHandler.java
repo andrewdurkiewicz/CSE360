@@ -30,83 +30,98 @@ public class DataHandler {
 	 * Opens a save dialog where the user can name and save their file.
 	 * @param parent Parent Frame for reference to set dialog location (can be null)
 	 */
-	public static void save(JFrame parent) {
+	public static void save(JFrame parent)
+	{
 		//Generate Save Dialog
 		JFileChooser sDia = new JFileChooser();
 		sDia.setFileFilter(new drawingFileFilter());
 		int diaRet = sDia.showSaveDialog(parent);
 		
 		//Process results if file chosen
-		if(diaRet==JFileChooser.APPROVE_OPTION) {
+		if(diaRet==JFileChooser.APPROVE_OPTION) 
+		{
 			File selFile = sDia.getSelectedFile();
-			try {
+			try 
+			{
 				//Append Extension if not present
 				String fp = selFile.getPath();
-				if(!fp.endsWith(".ud")) {
+				
+				if(!fp.endsWith(".ud")) 
+				{
 					selFile = new File(fp.concat(".ud"));
 				}
+				
 				//Create streams and add icons to stream
 				FileOutputStream fiStream = new FileOutputStream(selFile);
 				ObjectOutputStream ooStream = new ObjectOutputStream(fiStream);
+				
 				//Create Root arraylist for export
 				ArrayList<ArrayList> export = new ArrayList<ArrayList>();
 				export.add(IconRecord);
 				export.add(ArrowRecord);
 				ooStream.writeObject(export);
 				ooStream.close();
-			} catch (Exception e) {
+			} 
+			catch (Exception e) 
+			{
 				System.out.println("***[ERROR][DataHandler.save@FileIO when save file is true]***");
 				e.printStackTrace();
 			}
 		}
-		
 	}
 	/**
 	 * Opens a load dialog where the user can select a file to open
 	 * @param parent Parent Frame for reference to set dialog location (can be null)
 	 */
 	@SuppressWarnings("unchecked")
-	public static void load(JFrame parent) {
+	public static void load(JFrame parent) 
+	{
 		//confirm with the user that this will override any work they may have done
 		int res = JOptionPane.showConfirmDialog(null, "This will overwrite any progress!\nLoad File?", "Warning", JOptionPane.YES_NO_OPTION);
 		
-		if(res==0) {
+		if(res==0) 
+		{
 			//Generate Save Dialog
 			JFileChooser sDia = new JFileChooser();
 			sDia.setFileFilter(new drawingFileFilter());
 			int diaRet = sDia.showOpenDialog(parent);
 			
-			try {
+			try 
+			{
 				//Create file input stream and set data if user selected their file
-				if(diaRet==JFileChooser.APPROVE_OPTION) {
+				if(diaRet==JFileChooser.APPROVE_OPTION) 
+				{
 					File selFile = sDia.getSelectedFile();
 					FileInputStream inStream = new FileInputStream(selFile);
 					ObjectInputStream oiStream = new ObjectInputStream(inStream);
+					
 					//load root arraylist and assign children to user data objects
 					@SuppressWarnings("rawtypes")
 					ArrayList<ArrayList> temp = (ArrayList<ArrayList>) oiStream.readObject();
 					IconRecord = temp.get(0);
 					ArrowRecord = temp.get(1);
 					oiStream.close();
-					}
-				
-				
-			} catch(Exception e) {
+				}
+			} 
+			catch(Exception e)
+			{
 				System.out.println("***[ERROR][DataHandler.load@FileIO when load file is true]***");
 				e.printStackTrace();
 			}
-		} else {
+		} 
+		else 
+		{
 			//do nothing, user had to have selected no on confirm dialog
 		}
 		
 	}
 	
-
 	/**
 	 * Returns ArrayList of all icons added to DrawPanelTwo
 	 * @return ArrayList of DraggableIcon
 	 */
-	public static ArrayList<DraggableIcon> getIconRecord() {
+	public static ArrayList<DraggableIcon> getIconRecord() 
+	{
 		return IconRecord;
 	}
 	
@@ -115,7 +130,8 @@ public class DataHandler {
 	 * @param DraggableIcon
 	 */
 	
-	public static void addIcon(DraggableIcon icon) {
+	public static void addIcon(DraggableIcon icon) 
+	{
 		IconRecord.add(icon);
 	}
 	
@@ -123,7 +139,8 @@ public class DataHandler {
 	 * Returns ArrayList of all Arrows added to DrawPanelTwo
 	 * @return ArrayList of DrawArrow
 	 */
-	public static ArrayList<DrawArrow> getArrowRecord() {
+	public static ArrayList<DrawArrow> getArrowRecord()
+	{
 		return ArrowRecord;
 	}
 	
@@ -131,14 +148,17 @@ public class DataHandler {
 	 * Adds new DrawArrow to ArrayList
 	 * @param DrawArrow
 	 */
-	public static void addArrow(DrawArrow Arrow) {
+	public static void addArrow(DrawArrow Arrow)
+	{
 		ArrowRecord.add(Arrow);
 	}
 	
-	public static void removeIcon(DraggableIcon d) {
+	public static void removeIcon(DraggableIcon d)
+	{
 		IconRecord.remove(d);
 	}
-	public static void removeArrow(DrawArrow a) {
+	public static void removeArrow(DrawArrow a)
+	{
 		ArrowRecord.remove(a);
 	}
 }
@@ -150,38 +170,42 @@ public class DataHandler {
  * @author cody
  *
  */
-class drawingFileFilter extends FileFilter{
-//	Set the desired file extension here
+class drawingFileFilter extends FileFilter
+{
+	//	Set the desired file extension here
 	protected final String FileExtension = "ud";
 
-
-	
 	/**
 	 * Used to determine what should be accepted through the filter
 	 * Directories need to be accepted, and files matching our extension
 	 * @param f File/Folder to test in filter.
 	 */
+	
 	@Override
-	public boolean accept(File f) {
-		if(f.isDirectory()==true) {
+	public boolean accept(File f) 
+	{
+		if(f.isDirectory()==true) 
+		{
 			return true;
 		}
+		
 		//Get extension of the given file and test it against our set FileExtension
 		String x = f.getName();
 		int m = x.lastIndexOf(".");
 		String ext = x.substring(m+1, x.length());
-		if (ext.toLowerCase().equals(FileExtension)){
+		
+		if (ext.toLowerCase().equals(FileExtension))
+		{
 			return true;
 		}
-		
 		
 		return false;
 	}
 
 	@Override
-	public String getDescription() {
+	public String getDescription() 
+	{
 		return "JavaDraw Save File (."+FileExtension+")";
 	}
-	
 }
 	
