@@ -155,13 +155,15 @@ public void drawLineHelper(Point prev, Point next)
 	    public void mousePressed(MouseEvent e)
 	    {
 			Object obj = e.getSource();
-
-			if(e.isAltDown() && obj.getClass().getSimpleName().equals("DraggableIcon"))
+			boolean alt = e.isAltDown();
+			if(alt && obj.getClass().getSimpleName().equals("DraggableIcon"))
 			{
+				alt = false;
 				DataHandler.removeIcon((DraggableIcon) obj);
 				updatePanel();
 			}
-			else if(e.isAltDown() && obj.getClass().getSimpleName().equals("DrawArrow")) {
+			else if(alt && obj.getClass().getSimpleName().equals("DrawArrow")) {
+				alt = false;
 				DataHandler.removeArrow((DrawArrow) obj);
 				updatePanel();
 			}
@@ -242,7 +244,7 @@ public void drawLineHelper(Point prev, Point next)
 		for(DrawArrow arr:DataHandler.getArrowRecord()) 
 		{
 			arr.setBounds(0,0, 870, 485);
-			arr.addMouseListener(mouseHandler);
+			//arr.addMouseListener(mouseHandler);
 			this.add(arr);
 		}
 	}
