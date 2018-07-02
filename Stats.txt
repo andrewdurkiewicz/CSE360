@@ -1,0 +1,275 @@
+PROJECT 1                      
+
+
+
+Report Banner - Edit rsm.cfg File
+
+           Resource Standard Metrics (TM) for C, C++, C# and Java
+                   Version 7.75 - mSquaredTechnologies.com
+
+  License Type: Shareware Evaluation License
+  Licensed To : Shareware End User - Distribute Freely
+  License No. : SW1380                          License Date: Dec 05, 1998
+  Build Date  : Sep  2 2009                         Run Date: Jul 02, 2018
+  (C)1996-2009 M Squared Technologies LLC
+  ________________________________________________________________________
+
+  License File: C:\Program Files (x86)\MSquared\M2 RSM\rsm.lic
+  Config. File: C:\Program Files (x86)\MSquared\M2 RSM\rsm.cfg
+  Command Line: -r java C:\Users\adurkiew\Desktop\Project1TimeSHot\Project
+                1\src 
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\Dragga
+        bleIcon.java
+  LOC 59       eLOC 48       lLOC 30       Comment 12       Lines       91
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\DrawAr
+        row.java
+  LOC 20       eLOC 16       lLOC 12       Comment 0        Lines       29
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\DrawFr
+        ame.java
+  LOC 33       eLOC 30       lLOC 27       Comment 18       Lines       59
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\DrawPa
+        nelOne.java
+  LOC 21       eLOC 19       lLOC 17       Comment 0        Lines       28
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\DrawPa
+        nelTwo.java
+  LOC 96       eLOC 79       lLOC 51       Comment 9        Lines      134
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\JUML.j
+        ava
+  LOC 21       eLOC 11       lLOC 5        Comment 6        Lines       30
+
+  File: C:\Users\adurkiew\Desktop\Project1TimeSHot\Project1\src\gui\packag
+        e-info.java
+  LOC 1        eLOC 1        lLOC 1        Comment 9        Lines       10
+
+  ------------------------------------------------------------------------
+
+                     ~~ Project Analysis For 7 Files ~~
+
+  LOC 251      eLOC 204      lLOC 143      Comment 54       Lines      381
+  Average per File, metric/7 files
+  LOC 35       eLOC 29       lLOC 20       Comment 7        Lines       54
+
+  ------------------------------------------------------------------------
+
+                             ~~ File Summary ~~
+
+  C Source Files *.c ....:          0  C/C++ Include Files *.h:          0
+  C++ Source Files *.c* .:          0  C++ Include Files *.h* :          0
+  C# Source Files *.cs ..:          0  Java Source File *.jav*:          7
+  Other File Count ......:          0  Total File Count ......:          7
+
+
+          Shareware evaluation licenses process only 20 files.
+          Paid licenses enable processing for an unlimited number of files.
+
+  ________________________________________________________________________
+
+                      Report Banner - Edit rsm.cfg File
+
+
+Project 2
+                      Report Banner - Edit rsm.cfg File
+
+           Resource Standard Metrics (TM) for C, C++, C# and Java
+                   Version 7.75 - mSquaredTechnologies.com
+
+  License Type: Shareware Evaluation License
+  Licensed To : Shareware End User - Distribute Freely
+  License No. : SW1380                          License Date: Dec 05, 1998
+  Build Date  : Sep  2 2009                         Run Date: Jul 02, 2018
+  (C)1996-2009 M Squared Technologies LLC
+  ________________________________________________________________________
+
+  License File: C:\Program Files (x86)\MSquared\M2 RSM\rsm.lic
+  Config. File: C:\Program Files (x86)\MSquared\M2 RSM\rsm.cfg
+  Command Line: -r java C:\Users\adurkiew\Desktop\Project2-Snapshot\Projec
+                t1\src 
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\Butto
+        nPanel.java
+  LOC 22       eLOC 19       lLOC 17       Comment 1        Lines       29
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\creat
+        eArrowPanel.java
+  LOC 171      eLOC 126      lLOC 98       Comment 11       Lines      229
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\creat
+        eTextPanel.java
+  LOC 145      eLOC 124      lLOC 83       Comment 13       Lines      200
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\Dragg
+        ableIcon.java
+  LOC 62       eLOC 50       lLOC 31       Comment 13       Lines       97
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\DrawA
+        rrow.java
+  LOC 92       eLOC 74       lLOC 62       Comment 10       Lines      119
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\DrawF
+        rame.java
+  LOC 54       eLOC 51       lLOC 48       Comment 21       Lines       85
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\DrawP
+        anelOne.java
+  LOC 20       eLOC 18       lLOC 16       Comment 5        Lines       37
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\DrawP
+        anelTwo.java
+  LOC 182      eLOC 142      lLOC 105      Comment 19       Lines      244
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\JUML.
+        java
+  LOC 21       eLOC 11       lLOC 5        Comment 7        Lines       32
+
+  File: C:\Users\adurkiew\Desktop\Project2-Snapshot\Project1\src\gui\packa
+        ge-info.java
+  LOC 1        eLOC 1        lLOC 1        Comment 9        Lines       10
+
+  ------------------------------------------------------------------------
+
+                     ~~ Project Analysis For 10 Files ~~
+
+  LOC 770      eLOC 616      lLOC 466      Comment 109      Lines     1082
+  Average per File, metric/10 files
+  LOC 77       eLOC 61       lLOC 46       Comment 10       Lines      108
+
+  ------------------------------------------------------------------------
+
+                             ~~ File Summary ~~
+
+  C Source Files *.c ....:          0  C/C++ Include Files *.h:          0
+  C++ Source Files *.c* .:          0  C++ Include Files *.h* :          0
+  C# Source Files *.cs ..:          0  Java Source File *.jav*:         10
+  Other File Count ......:          0  Total File Count ......:         10
+
+
+          Shareware evaluation licenses process only 20 files.
+          Paid licenses enable processing for an unlimited number of files.
+
+  ________________________________________________________________________
+
+                      Report Banner - Edit rsm.cfg File
+
+
+
+Project 3
+
+                     Report Banner - Edit rsm.cfg File
+
+           Resource Standard Metrics (TM) for C, C++, C# and Java
+                   Version 7.75 - mSquaredTechnologies.com
+
+  License Type: Shareware Evaluation License
+  Licensed To : Shareware End User - Distribute Freely
+  License No. : SW1380                          License Date: Dec 05, 1998
+  Build Date  : Sep  2 2009                         Run Date: Jul 02, 2018
+  (C)1996-2009 M Squared Technologies LLC
+  ________________________________________________________________________
+
+  License File: C:\Program Files (x86)\MSquared\M2 RSM\rsm.lic
+  Config. File: C:\Program Files (x86)\MSquared\M2 RSM\rsm.cfg
+  Command Line: -r java C:\Users\adurkiew\Documents\GitHub\CSE360\Project1
+                \src 
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\ButtonP
+        anel.java
+  LOC 16       eLOC 12       lLOC 10       Comment 1        Lines       19
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\createA
+        rrowPanel.java
+  LOC 222      eLOC 159      lLOC 124      Comment 11       Lines      285
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\createT
+        extPanel.java
+  LOC 47       eLOC 38       lLOC 24       Comment 2        Lines       67
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\DataHan
+        dler.java
+  LOC 130      eLOC 85       lLOC 58       Comment 58       Lines      211
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\Draggab
+        leIcon.java
+  LOC 56       eLOC 41       lLOC 22       Comment 11       Lines       75
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\DrawArr
+        ow.java
+  LOC 122      eLOC 97       lLOC 82       Comment 13       Lines      156
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\DrawFra
+        me.java
+  LOC 95       eLOC 75       lLOC 60       Comment 22       Lines      128
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\DrawPan
+        elOne.java
+  LOC 17       eLOC 14       lLOC 12       Comment 3        Lines       23
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\DrawPan
+        elTwo.java
+  LOC 245      eLOC 179      lLOC 134      Comment 33       Lines      322
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\editFon
+        tPanel.java
+  LOC 134      eLOC 98       lLOC 68       Comment 2        Lines      148
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\iconCir
+        cle.java
+  LOC 9        eLOC 6        lLOC 4        Comment 1        Lines       14
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\iconRec
+        tangle.java
+  LOC 9        eLOC 6        lLOC 4        Comment 0        Lines       12
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\JUML.ja
+        va
+  LOC 21       eLOC 11       lLOC 5        Comment 7        Lines       34
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\nodeObs
+        erver.java
+  LOC 73       eLOC 45       lLOC 21       Comment 7        Lines       95
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\Nodes.j
+        ava
+  LOC 38       eLOC 29       lLOC 24       Comment 0        Lines       46
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\package
+        -info.java
+  LOC 1        eLOC 1        lLOC 1        Comment 9        Lines       10
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\Star.ja
+        va
+  LOC 8        eLOC 5        lLOC 3        Comment 0        Lines       11
+
+  File: C:\Users\adurkiew\Documents\GitHub\CSE360\Project1\src\gui\Triangl
+        e.java
+  LOC 8        eLOC 5        lLOC 3        Comment 0        Lines       11
+
+  ------------------------------------------------------------------------
+
+                     ~~ Project Analysis For 18 Files ~~
+
+  LOC 1251     eLOC 906      lLOC 659      Comment 180      Lines     1667
+  Average per File, metric/18 files
+  LOC 69       eLOC 50       lLOC 36       Comment 10       Lines       92
+
+  ------------------------------------------------------------------------
+
+                             ~~ File Summary ~~
+
+  C Source Files *.c ....:          0  C/C++ Include Files *.h:          0
+  C++ Source Files *.c* .:          0  C++ Include Files *.h* :          0
+  C# Source Files *.cs ..:          0  Java Source File *.jav*:         18
+  Other File Count ......:          0  Total File Count ......:         18
+
+
+          Shareware evaluation licenses process only 20 files.
+          Paid licenses enable processing for an unlimited number of files.
+
+  ________________________________________________________________________
+
+                      Report Banner - Edit rsm.cfg File
